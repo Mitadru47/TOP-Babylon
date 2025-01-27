@@ -1,3 +1,53 @@
+/* Level 1 | Root Level Elements */
+
 html{
     border: 1px solid red;
+}
+
+body{
+    border: 1px solid green;
+}
+
+#root{
+
+    margin: 10px;
+    border: 1px solid blue;
+}
+
+/* Level 2 | Page Level Elements */
+
+.page{
+
+    margin: 10px;
+    border: 1px solid orangered;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.page-section{
+
+    margin: 10px;
+    border: 1px solid yellowgreen;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Level 3 | Component Level Elements */
+
+.component{
+
+    margin: 10px;
+    border: 1px solid purple;
+
+    width: 100vw;
+}
+
+#content-component{
+    width: 80vw
+}
+
+#sidebar-component, #users-component{
+    width: 20vw;
 }

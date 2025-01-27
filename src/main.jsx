@@ -3,13 +3,12 @@ import "./styles/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import App from "./components/App.jsx";
+import Feed from "./components/Feed.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   
-  <React.StrictMode>
-    
-    <App />
+  <React.StrictMode>   
+    <Feed />
     
   </React.StrictMode>
 );
