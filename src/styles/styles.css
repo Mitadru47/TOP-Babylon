@@ -86,3 +86,24 @@ body{
 #header-date-time{
     font-size: 0.8rem;
 }
+
+/* Level 3 | Component Level Elements */
+/* Sidebar.jsx */
+
+#sidebar-component{
+ 
+    padding: 10px;
+    display: flex;
+
+    flex-direction: column;
+}
+
+#bottom-user-buttons-container{
+
+    height: 60vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
