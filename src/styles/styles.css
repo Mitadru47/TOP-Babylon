@@ -107,3 +107,15 @@ body{
 
     justify-content: space-between;
 }
+
+/* Level 3 | Component Level Elements */
+/* Users.jsx */
+
+#users-component, #users-list-container{
+
+    padding: 10px;
+    display: flex;
+    
+    flex-direction: column;
+    gap: 10px;
+}
