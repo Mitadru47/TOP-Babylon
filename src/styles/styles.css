@@ -119,3 +119,46 @@ body{
     flex-direction: column;
     gap: 10px;
 }
+
+/* Level 3 | Component Level Elements */
+/* Footer.jsx */
+
+#footer-component{
+
+    padding: 10px;
+    display: flex;    
+    
+    flex-direction: column;
+    gap: 10px;
+}
+
+#footer-top-row{
+
+    padding: 10px;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+#footer-country{
+    font-size: 1.2rem;
+}
+
+#footer-links-container{
+
+    display: flex;
+    gap: 10px;
+
+    font-size: 0.9rem;
+}
+
+#footer-bottom-row{
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 0.8rem;
+}
