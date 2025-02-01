@@ -14,6 +14,10 @@ body{
     border: 1px solid blue;
 }
 
+hr{
+    margin: 20px 0;
+}
+
 /* Level 2 | Page Level Elements */
 
 .page{
@@ -34,29 +38,35 @@ body{
     justify-content: space-between;
 }
 
+.page-left-bottom, .page-right-bottom{
+
+    height: 95vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
 /* Level 3 | Component Level Elements */
 /* General */
 
 .component{
-
-    width: 100vw;
     
     margin: 10px;
     border: 1px solid purple;
 }
 
-#content-component{
-    width: 80vw
-}
-
 #sidebar-component, #users-component{
-    width: 20vw;
+    width: 15vw;
 }
 
 /* Level 3 | Component Level Elements */
 /* Header.jsx */
 
 #header-component{
+
+    width: 100vw;
 
     padding: 10px;
     display: flex;
@@ -92,6 +102,8 @@ body{
 
 #sidebar-component{
  
+    height: 60vh;
+
     padding: 10px;
     display: flex;
 
@@ -101,7 +113,7 @@ body{
 #bottom-user-buttons-container{
 
     height: 60vh;
-
+    
     display: flex;
     flex-direction: column;
 
@@ -124,7 +136,7 @@ body{
 
 .content-card{
 
-    width: 55vw;
+    width: 45vw;
     height: 25vh;
 
     margin: 10px;
@@ -177,6 +189,8 @@ body{
 
 #users-component, #users-list-container{
 
+    height: 60vh;
+
     padding: 10px;
     display: flex;
     
@@ -185,9 +199,9 @@ body{
 }
 
 /* Level 3 | Component Level Elements */
-/* Footer.jsx */
+/* LeftFooter.jsx, RightFooter.jsx */
 
-#footer-component{
+#left-footer-component, #right-footer-component{
 
     padding: 10px;
     display: flex;    
@@ -196,13 +210,14 @@ body{
     gap: 10px;
 }
 
-#footer-top-row{
+#left-footer-top-row, #right-footer-top-row{
 
-    padding: 10px;
     display: flex;
+    align-items: top;
+}
 
-    align-items: center;
-    justify-content: space-between;
+#right-footer-top-row{
+    justify-content: end;
 }
 
 #footer-country{
@@ -212,14 +227,15 @@ body{
 #footer-links-container{
 
     display: flex;
+    flex-direction: column;
+
+    align-items: end;
     gap: 10px;
 
     font-size: 0.9rem;
 }
 
-#footer-bottom-row{
-
-    padding: 10px;
+#left-footer-bottom-row{
 
     display: flex;
     flex-direction: column;

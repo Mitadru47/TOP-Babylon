@@ -1,12 +1,10 @@
-function Footer(){
+function RightFooter(){
     return(
 
-        <div id="footer-component" className="component">
+        <div id="right-footer-component" className="component">
             
-            <div id="footer-top-row">
+            <div id="right-footer-top-row">
 
-                <div id="footer-country">India</div>
-                
                 <div id="footer-links-container">
 
                     <div id="footer-link1"><a href="">Project Idea</a></div>
@@ -17,17 +15,9 @@ function Footer(){
                 </div>
 
             </div>
-
-            <div id="footer-bottom-row">
-
-                <div id="footer-copyright-info">Iterative Improv &copy; 2025</div>
-
-                <div id="footer-message">Created with ❤️ by Mitadru Gangopadhyay</div>
-
-            </div>
             
         </div>
     );
 }
 
-export default Footer;
+export default RightFooter;

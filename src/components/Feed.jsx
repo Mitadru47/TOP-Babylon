@@ -1,5 +1,7 @@
 import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
+
+import LeftFooter from "./LeftFooter.jsx";
+import RightFooter from "./RightFooter.jsx";
 
 import Sidebar from "./Sidebar.jsx";
 import Users from "./Users.jsx";
@@ -18,7 +20,12 @@ function Feed(){
 
             <div className="page-middle page-section">
 
-                <Sidebar />
+                <div className="page-left-bottom page-section">
+
+                    <Sidebar />
+                    <LeftFooter />
+
+                </div>
                 
                 <div id="content-card-container">
 
@@ -42,7 +49,7 @@ function Feed(){
                                 
                     />
 
-                    {/* <Content 
+                        <Content 
                     
                         author="MaceTheAce" 
                         date="Tue Jan 28 2025 19:24:51 GMT+0530 (India Standard Time)"
@@ -60,16 +67,16 @@ function Feed(){
                         title="Eddard To Robb Stark"
                         body="Know the men who follow you and let them know you. Don't ask your men to die for a stranger."
 
-                    /> */}
+                    />
 
                 </div>
                 
-                <Users />
+                <div className="page-right-bottom page-section">
 
-            </div>
+                    <Users />                   
+                    <RightFooter />
 
-            <div className="page-bottom page-section">
-                <Footer />
+                </div>
 
             </div>
 
