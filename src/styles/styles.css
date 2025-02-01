@@ -109,6 +109,70 @@ body{
 }
 
 /* Level 3 | Component Level Elements */
+/* Feed.jsx */
+
+#content-card-container{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+/* Level 3 | Component Level Elements */
+/* Content.jsx */
+
+.content-card{
+
+    width: 55vw;
+    height: 25vh;
+
+    margin: 10px;
+    padding: 10px;
+
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.content-card-top{
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-author{
+    font-size: 1.2rem;
+}
+
+.post-date{
+    font-size: 0.8rem;
+}
+
+.content-card-middle{
+    padding: 10px;
+}
+
+.post-title{
+    font-weight: bold;
+}
+
+.post-buttons{
+
+    padding: 10px;
+
+    display: flex;
+    justify-content: end;
+
+    gap: 10px;
+}
+
+/* Level 3 | Component Level Elements */
 /* Users.jsx */
 
 #users-component, #users-list-container{
