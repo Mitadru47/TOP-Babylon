@@ -1,26 +1,50 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+async function getUserList(setUserList){
+
+    axios.get("http://localhost:3000/users")
+
+        .then((response) => setUserList(response.data))
+        .catch((error) => console.log(error));
+}
+
 function Users(){
 
-    return(
+    const [userList, setUserList] = useState();
+    
+    useEffect(() => {
+        getUserList(setUserList);
 
-        <div id="users-component" className="component">
-            
-            <div id="users-list-header-container">
-            
-                <div id="users-list-header">Fellow Babylonians</div>
+    }, []);
+
+    console.log(userList);
+
+    if(userList){
+
+        return(
+
+            <div id="users-component" className="component">
                 
-            </div>
-
-            <div id="users-list-container">
+                <div id="user-list-header-container">
                 
-                <div className="users-list">Ned</div>
-                <div className="users-list">Sweetrobin</div>
-                <div className="users-list">LordOfCasterlyRock</div>
-                <div className="users-list">MaceTheAce</div>
+                    <div id="user-list-header">Fellow Babylonians</div>
+                    
+                </div>
 
+                <div id="user-list-container">
+                    
+                    { userList.map((user, index) => {
+                        return(<div key={"user" + (index + 1)} className="user-list">{user.username}</div>); })}
+
+                </div>
+    
             </div>
- 
-        </div>
-    );
+        );
+    }
+
+    else
+        return(<div id="users-component" className="component">Loading..</div>);
 }
 
 export default Users;
