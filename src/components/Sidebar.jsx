@@ -1,60 +1,155 @@
+import { useEffect, useState } from "react";
+
+import axios from "axios";
+import { BABYLON_SERVER_URL } from "../utils/urls";
+
+async function getUserCount(setUserCount){
+
+    axios.get(BABYLON_SERVER_URL + "/users/count")
+
+        .then((response) => setUserCount(response.data))
+        .catch((error) => console.log(error));
+}
+
+async function getPostCount(setPostCount){
+
+    axios.get(BABYLON_SERVER_URL + "/posts/count")
+
+        .then((response) => setPostCount(response.data))
+        .catch((error) => console.log(error));
+}
+
 function Sidebar(){
-    return(
 
-        <div id="sidebar-component" className="component">
-            
-            <div id="top-info-container">
+    const [userCount, setUserCount] = useState();
+    const [postCount, setPostCount] = useState();
 
-                <div id="posts-count">Total Posts: 2</div>
-                <div id="users-count">Total Users: 2</div>
+    useEffect(() => {
 
-                <hr></hr>
+        getUserCount(setUserCount);
+        getPostCount(setPostCount);
 
-            </div>
+    }, []);
 
-            <div id="bottom-user-buttons-container">
+    if(userCount && postCount){
 
-                <div id="user-buttons-group1">
+        return(
 
-                    <div id="my-profile-button-container">
+            <div id="sidebar-component" className="component">
+                
+                <div id="top-info-container">
 
-                        <a href="">My Profile</a>
+                    <div id="posts-count">Total Posts: {postCount}</div>
+                    <div id="users-count">Total Users: {userCount}</div>
+
+                    <hr></hr>
+
+                </div>
+
+                <div id="bottom-user-buttons-container">
+
+                    <div id="user-buttons-group1">
+
+                        <div id="my-profile-button-container">
+
+                            <a href="">My Profile</a>
+
+                        </div>
+
+                        <div id="my-posts-button-container">
+
+                            <a href="">My Posts</a>
+
+                        </div>
+
+                        <div id="my-comments-button-container">
+
+                            <a href="">My Comments</a>
+
+                        </div>
+
+                        <br></br>
+
+                        <div id="archived-posts-button-container">
+
+                            <a href="">Archived Posts</a>
+
+                        </div>
 
                     </div>
+                    
+                    <div id="user-buttons-group2">
 
-                    <div id="my-posts-button-container">
-
-                        <a href="">My Posts</a>
-
-                    </div>
-
-                    <div id="my-comments-button-container">
-
-                        <a href="">My Comments</a>
-
-                    </div>
-
-                    <br></br>
-
-                    <div id="archived-posts-button-container">
-
-                        <a href="">Archived Posts</a>
+                        <a href="">Log out</a>
+                        <hr></hr>
 
                     </div>
 
                 </div>
                 
-                <div id="user-buttons-group2">
+            </div>
+        );
+    }
 
-                    <a href="">Log out</a>
+    else{
+
+        return(
+
+            <div id="sidebar-component" className="component">
+                
+                <div id="top-info-container">
+
+                    <div id="posts-count">Total Posts: Loading..</div>
+                    <div id="users-count">Total Users: Loading..</div>
+
                     <hr></hr>
 
                 </div>
 
+                <div id="bottom-user-buttons-container">
+
+                    <div id="user-buttons-group1">
+
+                        <div id="my-profile-button-container">
+
+                            <a href="">My Profile</a>
+
+                        </div>
+
+                        <div id="my-posts-button-container">
+
+                            <a href="">My Posts</a>
+
+                        </div>
+
+                        <div id="my-comments-button-container">
+
+                            <a href="">My Comments</a>
+
+                        </div>
+
+                        <br></br>
+
+                        <div id="archived-posts-button-container">
+
+                            <a href="">Archived Posts</a>
+
+                        </div>
+
+                    </div>
+                    
+                    <div id="user-buttons-group2">
+
+                        <a href="">Log out</a>
+                        <hr></hr>
+
+                    </div>
+
+                </div>
+                
             </div>
-            
-        </div>
-    );
+        );
+    }
 }
 
 export default Sidebar;

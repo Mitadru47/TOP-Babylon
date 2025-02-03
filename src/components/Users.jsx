@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+
 import axios from "axios";
+import { BABYLON_SERVER_URL } from "../utils/urls";
 
 async function getUserList(setUserList){
 
-    axios.get("http://localhost:3000/users")
+    axios.get(BABYLON_SERVER_URL + "/users")
 
         .then((response) => setUserList(response.data))
         .catch((error) => console.log(error));
@@ -17,8 +19,6 @@ function Users(){
         getUserList(setUserList);
 
     }, []);
-
-    console.log(userList);
 
     if(userList){
 
@@ -35,7 +35,7 @@ function Users(){
                 <div id="user-list-container">
                     
                     { userList.map((user, index) => {
-                        return(<div key={"user" + (index + 1)} className="user-list">{user.username}</div>); })}
+                        return(<div key={"user" + (index + 1)} className="user-list">{user}</div>); })}
 
                 </div>
     
