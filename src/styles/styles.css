@@ -71,14 +71,17 @@ hr{
 
     align-items: center;
     justify-content: center;
+
+    gap: 2.5px;
 }
 
 #left-login-page-container, #right-login-page-container{
 
+    width: 15vw;
     height: 40vh;
 
-    padding: 10px;
-    border: 1px solid tomato;
+    padding: 2vw;
+    
 
     display: flex;
     flex-direction: column;
@@ -87,8 +90,30 @@ hr{
     gap: 10px;
 }
 
+#left-login-page-container{
+
+    border: 2.5px solid tomato;
+
+    width: 35vw;
+    padding: 5vw;
+}
+
+#right-login-page-container{
+
+    border: 1px dashed teal;
+    gap: 50px;
+}
+
 #login-header{
     font-size: 4rem;
+}
+
+#log-in-info-line2{
+    margin-left: 10px;
+}
+
+#username-input, #password-input, #login-button{
+    margin-top: 2.5px;
 }
 
 /* Level 3 | Component Level Elements */

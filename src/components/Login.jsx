@@ -16,17 +16,18 @@ function Login(){
                 <div id="login-form-container">
 
                     <div id="log-in-info-line1">Already a fellow Babylonian?</div>
-                    <div id="log-in-info-line2">Log right in!</div>
+                    <div id="log-in-info-line2">log right in!</div>
+                    <br></br>
 
                     <form>
 
-                        <input />
+                        <input id="username-input" type="text" placeholder="Username"/>
                         <br></br>
 
-                        <input />
+                        <input id="password-input" type="text" placeholder="Password"/>
                         <br></br>
 
-                        <button>Log in</button>
+                        <button id="login-button">Log in</button>
 
                     </form>
 
