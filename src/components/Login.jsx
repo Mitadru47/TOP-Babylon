@@ -1,3 +1,26 @@
+import axios from "../utils/axios";
+
+function handleLogIn(event){
+
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const formDataObj = Object.fromEntries(formData.entries());
+    const formDataStr = JSON.stringify(formDataObj);
+
+    console.log(formDataStr);
+    
+    axios.post("/login", formDataStr)
+        
+        .then((response) => {
+            console.log(response.data);
+
+        })
+    
+        .catch((error) => console.log(error.response.data));
+}
+
 function Login(){
 
     return(
@@ -19,12 +42,12 @@ function Login(){
                     <div id="log-in-info-line2">log right in!</div>
                     <br></br>
 
-                    <form>
+                    <form onSubmit={handleLogIn}>
 
-                        <input id="username-input" type="text" placeholder="Username"/>
+                        <input id="username-input" name="username" type="text" placeholder="Username"/>
                         <br></br>
 
-                        <input id="password-input" type="text" placeholder="Password"/>
+                        <input id="password-input" name="password" type="text" placeholder="Password"/>
                         <br></br>
 
                         <button id="login-button">Log in</button>
