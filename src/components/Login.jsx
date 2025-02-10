@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import axios from "../utils/axios";
 
-function handleLogIn(event){
+function handleLogIn(event, setErrorMessage){
 
     event.preventDefault();
 
@@ -14,15 +15,31 @@ function handleLogIn(event){
     axios.post("/login", formDataStr)
         
         .then((response) => {
-            console.log(response.data);
+            
+            if(response.data === "Login Successful!"){
 
+                const errorBlock = document.getElementById("login-error-container");
+
+                errorBlock.classList.remove("showElement");
+                errorBlock.classList.add("hideElement");             
+            }
         })
     
-        .catch((error) => console.log(error.response.data));
+        .catch((error) => {
+            
+            setErrorMessage(error.response.data);
+
+            const errorBlock = document.getElementById("login-error-container");
+
+            errorBlock.classList.remove("hideElement");
+            errorBlock.classList.add("showElement");
+        });
 }
 
 function Login(){
 
+    const [errorMessage, setErrorMessage] = useState();
+    
     return(
 
         <div id="login-component" className="component">
@@ -42,7 +59,7 @@ function Login(){
                     <div id="log-in-info-line2">log right in!</div>
                     <br></br>
 
-                    <form onSubmit={handleLogIn}>
+                    <form onSubmit={(event) => handleLogIn(event, setErrorMessage)}>
 
                         <input id="username-input" name="username" type="text" placeholder="Username"/>
                         <br></br>
@@ -53,6 +70,13 @@ function Login(){
                         <button id="login-button">Log in</button>
 
                     </form>
+
+                    <div id="login-error-container">
+                    
+                        <div className="error-line1">{errorMessage ? errorMessage : ""}</div>
+                        <div className="error-line2">{errorMessage ? "Please try again!" : ""}</div>
+                        
+                    </div>
 
                 </div>
 

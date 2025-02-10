@@ -61,6 +61,14 @@ hr{
     width: 15vw;
 }
 
+.hideElement{
+    display: none;
+}
+
+.showElement{
+    display: block;
+}
+
 /* Level 3 | Component Level Elements */
 /* Login.jsx */
 
@@ -78,8 +86,6 @@ hr{
 #left-login-page-container, #right-login-page-container{
 
     width: 15vw;
-    height: 40vh;
-
     padding: 2vw;
     
 
@@ -92,6 +98,7 @@ hr{
 
 #left-login-page-container{
 
+    height: 40vh;
     border: 2.5px solid tomato;
 
     width: 35vw;
@@ -114,6 +121,14 @@ hr{
 
 #username-input, #password-input, #login-button{
     margin-top: 2.5px;
+}
+
+#login-error-container{
+
+    margin-top: 15px;
+
+    color: brown;
+    font-size: 0.8rem;
 }
 
 /* Level 3 | Component Level Elements */
