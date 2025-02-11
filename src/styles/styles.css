@@ -85,9 +85,7 @@ hr{
 
 #left-login-page-container, #right-login-page-container{
 
-    width: 15vw;
     padding: 2vw;
-    
 
     display: flex;
     flex-direction: column;
@@ -98,7 +96,9 @@ hr{
 
 #left-login-page-container{
 
+    width: 15vw;
     height: 40vh;
+
     border: 2.5px solid tomato;
 
     width: 35vw;
@@ -106,6 +106,8 @@ hr{
 }
 
 #right-login-page-container{
+
+    padding-right: 4vw;
 
     border: 1px dashed teal;
     gap: 50px;
@@ -125,6 +127,7 @@ hr{
 
 #login-error-container{
 
+    width: 175px;
     margin-top: 15px;
 
     color: brown;

@@ -18,6 +18,9 @@ function handleLogIn(event, setErrorMessage){
             
             if(response.data === "Login Successful!"){
 
+                const errorLine2 = document.getElementsByClassName("error-line2");
+                errorLine2[0].style.margin = "0px";
+
                 const errorBlock = document.getElementById("login-error-container");
 
                 errorBlock.classList.remove("showElement");
@@ -27,12 +30,47 @@ function handleLogIn(event, setErrorMessage){
     
         .catch((error) => {
             
-            setErrorMessage(error.response.data);
+            if(error.response.status === 400 && typeof(error.response.data) == "object"){
 
-            const errorBlock = document.getElementById("login-error-container");
+                let compiledErrorMessages = "";
 
-            errorBlock.classList.remove("hideElement");
-            errorBlock.classList.add("showElement");
+                error.response.data.forEach((errorMessage) => {
+                    compiledErrorMessages = compiledErrorMessages +  errorMessage.msg + "\n";
+                });
+
+                console.log(compiledErrorMessages);
+                setErrorMessage(compiledErrorMessages);
+
+                if(error.response.data.length > 1){
+
+                    const errorLine2 = document.getElementsByClassName("error-line2");
+                    errorLine2[0].style.marginTop = "5px";
+                }
+
+                else{
+                    
+                    const errorLine2 = document.getElementsByClassName("error-line2");
+                    errorLine2[0].style.margin = "0px";
+                }
+
+                const errorBlock = document.getElementById("login-error-container");
+
+                errorBlock.classList.remove("hideElement");
+                errorBlock.classList.add("showElement");
+            }
+
+            else{
+
+                setErrorMessage(error.response.data);
+
+                const errorLine2 = document.getElementsByClassName("error-line2");
+                errorLine2[0].style.margin = "0px";
+
+                const errorBlock = document.getElementById("login-error-container");
+
+                errorBlock.classList.remove("hideElement");
+                errorBlock.classList.add("showElement");
+            }
         });
 }
 
