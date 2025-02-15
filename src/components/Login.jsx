@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
 import axios from "../utils/axios";
+
+import { useState } from "react";
+import { storeJWT } from "../utils/auth";
 
 function handleLogIn(event, setErrorMessage){
 
@@ -10,14 +12,14 @@ function handleLogIn(event, setErrorMessage){
     const formDataObj = Object.fromEntries(formData.entries());
     const formDataStr = JSON.stringify(formDataObj);
 
-    console.log(formDataStr);
-    
     axios.post("/login", formDataStr)
         
         .then((response) => {
             
-            if(response.data === "Login Successful!"){
-
+            if(response.status === 200){
+                
+                storeJWT(response.data);
+                
                 const errorLine2 = document.getElementsByClassName("error-line2");
                 errorLine2[0].style.margin = "0px";
 
@@ -26,10 +28,15 @@ function handleLogIn(event, setErrorMessage){
                 errorBlock.classList.remove("showElement");
                 errorBlock.classList.add("hideElement");             
             }
+
+            else
+                console.log(response);
         })
     
         .catch((error) => {
             
+            console.log(error);
+
             if(error.response.status === 400 && typeof(error.response.data) == "object"){
 
                 let compiledErrorMessages = "";
@@ -38,7 +45,6 @@ function handleLogIn(event, setErrorMessage){
                     compiledErrorMessages = compiledErrorMessages +  errorMessage.msg + "\n";
                 });
 
-                console.log(compiledErrorMessages);
                 setErrorMessage(compiledErrorMessages);
 
                 if(error.response.data.length > 1){
@@ -48,7 +54,7 @@ function handleLogIn(event, setErrorMessage){
                 }
 
                 else{
-                    
+
                     const errorLine2 = document.getElementsByClassName("error-line2");
                     errorLine2[0].style.margin = "0px";
                 }
