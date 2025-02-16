@@ -1,7 +1,7 @@
 import axios from "../utils/axios";
 
 import { useState } from "react";
-import { storeJWT } from "../utils/auth";
+import { tokenExpiresIn, isLoggedIn, storeJWT } from "../utils/auth";
 
 function handleLogIn(event, setErrorMessage){
 
@@ -20,13 +20,33 @@ function handleLogIn(event, setErrorMessage){
                 
                 storeJWT(response.data);
                 
-                const errorLine2 = document.getElementsByClassName("error-line2");
-                errorLine2[0].style.margin = "0px";
+                if(isLoggedIn()){
 
-                const errorBlock = document.getElementById("login-error-container");
+                    console.log("Login Successful!");
+                    console.log("Auth token expires " + tokenExpiresIn() + ".");
+                
+                    const errorLine2 = document.getElementsByClassName("error-line2");
+                    errorLine2[0].style.margin = "0px";
 
-                errorBlock.classList.remove("showElement");
-                errorBlock.classList.add("hideElement");             
+                    const errorBlock = document.getElementById("login-error-container");
+
+                    errorBlock.classList.remove("showElement");
+                    errorBlock.classList.add("hideElement");        
+                    
+                }
+
+                else{
+
+                    setErrorMessage("Login Failed!");
+
+                    const errorLine2 = document.getElementsByClassName("error-line2");
+                    errorLine2[0].style.margin = "0px";
+
+                    const errorBlock = document.getElementById("login-error-container");
+
+                    errorBlock.classList.remove("hideElement");
+                    errorBlock.classList.add("showElement");
+                }
             }
 
             else
