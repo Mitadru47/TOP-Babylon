@@ -1,5 +1,7 @@
 import axios from "axios";
+
 import { BABYLON_SERVER_URL } from "../utils/urls";
+import { isLoggedIn } from "./auth";
 
 axios.interceptors.request
     .use((interceptedRequest) => {
@@ -7,7 +9,9 @@ axios.interceptors.request
         interceptedRequest.mode = "cors";
 
         interceptedRequest.headers["Content-Type"] = "application/json";
-        interceptedRequest.headers["Authorization"] = "";
+
+        if(isLoggedIn())
+            interceptedRequest.headers["Authorization"] = localStorage.getItem("token");
 
         interceptedRequest.baseURL = BABYLON_SERVER_URL;
 

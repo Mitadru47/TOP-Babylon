@@ -1,7 +1,9 @@
 import axios from "../utils/axios";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { tokenExpiresIn, isLoggedIn, storeJWT } from "../utils/auth";
+
+import { useNavigate } from "react-router-dom";
 
 function handleLogIn(event, setErrorMessage){
 
@@ -22,22 +24,18 @@ function handleLogIn(event, setErrorMessage){
                 
                 if(isLoggedIn()){
 
-                    console.log("Login Successful!");
-                    console.log("Auth token expires " + tokenExpiresIn() + ".");
-                
                     const errorLine2 = document.getElementsByClassName("error-line2");
                     errorLine2[0].style.margin = "0px";
 
                     const errorBlock = document.getElementById("login-error-container");
 
                     errorBlock.classList.remove("showElement");
-                    errorBlock.classList.add("hideElement");        
-                    
+                    errorBlock.classList.add("hideElement");
+
+                    setErrorMessage("");
                 }
 
                 else{
-
-                    setErrorMessage("Login Failed!");
 
                     const errorLine2 = document.getElementsByClassName("error-line2");
                     errorLine2[0].style.margin = "0px";
@@ -46,6 +44,8 @@ function handleLogIn(event, setErrorMessage){
 
                     errorBlock.classList.remove("hideElement");
                     errorBlock.classList.add("showElement");
+
+                    setErrorMessage("Login Failed!");
                 }
             }
 
@@ -65,8 +65,6 @@ function handleLogIn(event, setErrorMessage){
                     compiledErrorMessages = compiledErrorMessages +  errorMessage.msg + "\n";
                 });
 
-                setErrorMessage(compiledErrorMessages);
-
                 if(error.response.data.length > 1){
 
                     const errorLine2 = document.getElementsByClassName("error-line2");
@@ -83,11 +81,11 @@ function handleLogIn(event, setErrorMessage){
 
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
+
+                setErrorMessage(compiledErrorMessages);
             }
 
             else{
-
-                setErrorMessage(error.response.data);
 
                 const errorLine2 = document.getElementsByClassName("error-line2");
                 errorLine2[0].style.margin = "0px";
@@ -96,14 +94,28 @@ function handleLogIn(event, setErrorMessage){
 
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
+
+                setErrorMessage(error.response.data);
             }
-        });
+        }
+    );
 }
 
 function Login(){
 
+    const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState();
+
+    useEffect(() => {
+
+        if(isLoggedIn())
+            navigate("/");
     
+        else
+            navigate("/login");
+
+    }, [errorMessage]);
+   
     return(
 
         <div id="login-component" className="component">

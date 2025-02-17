@@ -13,6 +13,9 @@ import { BABYLON_SERVER_URL } from "../utils/urls";
 
 import { useEffect, useState } from "react";
 
+import { isLoggedIn } from "../utils/auth.js";
+import Login from "./Login.jsx";
+
 async function getPosts(setPosts){
 
     axios.get(BABYLON_SERVER_URL + "/posts")
@@ -23,101 +26,109 @@ async function getPosts(setPosts){
 
 function Feed(){
 
-    const [posts, setPosts] = useState();
+    if(isLoggedIn()){
 
-    useEffect(() => {
-        getPosts(setPosts);
+        const [posts, setPosts] = useState();
 
-    }, []);
+        useEffect(() => {
+            getPosts(setPosts);
 
-    if(posts){
+        }, []);
 
-        return(
+        if(posts){
 
-            <div id="feed-page" className="page">
-            
-                <div className="page-top page-section">
-                    <Header />
+            return(
+
+                <div id="feed-page" className="page">
                 
-                </div>
-
-                <div className="page-middle page-section">
-
-                    <div className="page-left-bottom page-section">
-
-                        <Sidebar />
-                        <LeftFooter />
-
-                    </div>
+                    <div className="page-top page-section">
+                        <Header />
                     
-                    <div id="content-card-container">
+                    </div>
 
-                        {posts.map((post, index) => {
-                            
-                            return(
-                            
-                                <Content 
+                    <div className="page-middle page-section">
+
+                        <div className="page-left-bottom page-section">
+
+                            <Sidebar />
+                            <LeftFooter />
+
+                        </div>
+                        
+                        <div id="content-card-container">
+
+                            {posts.map((post, index) => {
                                 
-                                    key={"content" + (index + 1)}
+                                return(
+                                
+                                    <Content 
+                                    
+                                        key={"content" + (index + 1)}
 
-                                    author={post.author.username} 
-                                    date={post.dateEdited}
+                                        author={post.author.username} 
+                                        date={post.dateEdited}
 
-                                    title={post.title}
-                                    body={post.body}
+                                        title={post.title}
+                                        body={post.body}
 
-                                />                           
-                            );
-                        })}
+                                    />                           
+                                );
+                            })}
 
-                    </div>
-                    
-                    <div className="page-right-bottom page-section">
+                        </div>
+                        
+                        <div className="page-right-bottom page-section">
 
-                        <Users />                   
-                        <RightFooter />
+                            <Users />                   
+                            <RightFooter />
+
+                        </div>
 
                     </div>
 
                 </div>
+            );
+        }
 
-            </div>
-        );
+        else{
+
+            return(
+            
+                <div id="feed-page" className="page">
+                    
+                    <div className="page-top page-section">
+                        <Header />
+                        
+                    </div>
+
+                    <div className="page-middle page-section">
+
+                        <div className="page-left-bottom page-section">
+
+                            <Sidebar />
+                            <LeftFooter />
+
+                        </div>
+
+                        <div id="content-card-container">Loading..</div>
+
+                        <div className="page-right-bottom page-section">
+
+                            <Users />                   
+                            <RightFooter />
+
+                        </div>
+
+                    </div>
+
+                </div>
+            
+            );
+        }
     }
 
     else
-        return(
-        
-            <div id="feed-page" className="page">
-                
-                <div className="page-top page-section">
-                    <Header />
-                    
-                </div>
-
-                <div className="page-middle page-section">
-
-                    <div className="page-left-bottom page-section">
-
-                        <Sidebar />
-                        <LeftFooter />
-
-                    </div>
-
-                    <div id="content-card-container">Loading..</div>
-
-                    <div className="page-right-bottom page-section">
-
-                        <Users />                   
-                        <RightFooter />
-
-                    </div>
-
-                </div>
-
-            </div>
-        
-        );
+        return <Login />;
 }
 
 export default Feed;
