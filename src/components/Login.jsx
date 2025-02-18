@@ -1,7 +1,7 @@
 import axios from "../utils/axios";
 
 import { useEffect, useState } from "react";
-import { tokenExpiresIn, isLoggedIn, storeJWT } from "../utils/auth";
+import { isLoggedIn, storeJWT } from "../utils/auth";
 
 import { useNavigate } from "react-router-dom";
 

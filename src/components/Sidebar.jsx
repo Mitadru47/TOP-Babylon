@@ -1,11 +1,9 @@
+import axios from "../utils/axios";
 import { useEffect, useState } from "react";
-
-import axios from "axios";
-import { BABYLON_SERVER_URL } from "../utils/urls";
 
 async function getUserCount(setUserCount){
 
-    axios.get(BABYLON_SERVER_URL + "/users/count")
+    axios.get("/users/count")
 
         .then((response) => setUserCount(response.data))
         .catch((error) => console.log(error));
@@ -13,7 +11,7 @@ async function getUserCount(setUserCount){
 
 async function getPostCount(setPostCount){
 
-    axios.get(BABYLON_SERVER_URL + "/posts/count")
+    axios.get("/posts/count")
 
         .then((response) => setPostCount(response.data))
         .catch((error) => console.log(error));

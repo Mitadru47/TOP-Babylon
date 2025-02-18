@@ -6,6 +6,8 @@ export function storeJWT(responseData){
 
     localStorage.setItem("token", responseData.token);
     localStorage.setItem("expiration", JSON.stringify(expiration.valueOf()));
+
+    localStorage.setItem("uid", responseData.uid);
 }
 
 export function logOut(){

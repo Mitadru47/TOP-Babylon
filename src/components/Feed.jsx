@@ -7,18 +7,16 @@ import Sidebar from "./Sidebar.jsx";
 import Users from "./Users.jsx";
 
 import Content from "./Content.jsx";
-
-import axios from "axios";
-import { BABYLON_SERVER_URL } from "../utils/urls";
+import Login from "./Login.jsx";
 
 import { useEffect, useState } from "react";
 
+import axios from "../utils/axios";
 import { isLoggedIn } from "../utils/auth.js";
-import Login from "./Login.jsx";
 
 async function getPosts(setPosts){
 
-    axios.get(BABYLON_SERVER_URL + "/posts")
+    axios.get("/posts")
 
         .then((response) => setPosts(response.data))
         .catch((error) => console.log(error));

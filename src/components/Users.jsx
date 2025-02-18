@@ -1,11 +1,9 @@
+import axios from "../utils/axios";
 import { useState, useEffect } from "react";
-
-import axios from "axios";
-import { BABYLON_SERVER_URL } from "../utils/urls";
 
 async function getUserList(setUserList){
 
-    axios.get(BABYLON_SERVER_URL + "/users")
+    axios.get("/users")
 
         .then((response) => setUserList(response.data))
         .catch((error) => console.log(error));
