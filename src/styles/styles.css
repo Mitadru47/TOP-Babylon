@@ -163,11 +163,17 @@ hr{
 }
 
 #greeting{
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+}
+
+#auth-token-expiration-eta{
+
+    font-size: 0.8rem;
+    margin-bottom: 10px;
 }
 
 #header-date-time{
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 /* Level 3 | Component Level Elements */
