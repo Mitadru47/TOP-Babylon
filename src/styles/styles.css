@@ -29,6 +29,10 @@ hr{
     flex-direction: column; 
 }
 
+.page-middle{
+    height: 80vh;
+}
+
 .page-section{
 
     margin: 10px;
@@ -39,8 +43,6 @@ hr{
 }
 
 .page-left-bottom, .page-right-bottom{
-
-    height: 95vh;
 
     display: flex;
     flex-direction: column;
@@ -204,10 +206,10 @@ hr{
 
 #content-card-container{
 
-    display: flex;
-    flex-direction: column;
+    border: 1px solid palevioletred;
+    margin: 10px;
 
-    gap: 10px;
+    overflow: auto;
 }
 
 /* Level 3 | Component Level Elements */
