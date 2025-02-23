@@ -46,7 +46,7 @@ function Feed(){
 
                     <div className="page-middle page-section">
 
-                        <div className="page-left-bottom page-section">
+                        <div className="page-left-bottom">
 
                             <Sidebar />
                             <LeftFooter />
@@ -75,7 +75,7 @@ function Feed(){
 
                         </div>
                         
-                        <div className="page-right-bottom page-section">
+                        <div className="page-right-bottom">
 
                             <Users />                   
                             <RightFooter />
@@ -101,7 +101,7 @@ function Feed(){
 
                     <div className="page-middle page-section">
 
-                        <div className="page-left-bottom page-section">
+                        <div className="page-left-bottom">
 
                             <Sidebar />
                             <LeftFooter />
@@ -110,7 +110,7 @@ function Feed(){
 
                         <div id="content-card-container">Loading..</div>
 
-                        <div className="page-right-bottom page-section">
+                        <div className="page-right-bottom">
 
                             <Users />                   
                             <RightFooter />

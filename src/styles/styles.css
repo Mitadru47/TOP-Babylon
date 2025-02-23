@@ -1,17 +1,7 @@
 /* Level 1 | Root Level Elements */
 
-html{
-    border: 1px solid red;
-}
-
 body{
-    border: 1px solid green;
-}
-
-#root{
-
-    margin: 10px;
-    border: 1px solid blue;
+    margin: 0;
 }
 
 hr{
@@ -21,9 +11,6 @@ hr{
 /* Level 2 | Page Level Elements */
 
 .page{
-
-    margin: 10px;
-    border: 1px solid orangered;
 
     display: flex;
     flex-direction: column; 
@@ -54,13 +41,11 @@ hr{
 /* General */
 
 .component{
-    
-    margin: 10px;
     border: 1px solid purple;
 }
 
 #sidebar-component, #users-component{
-    width: 15vw;
+    margin: 0;
 }
 
 .hideElement{
@@ -183,7 +168,7 @@ hr{
 
 #sidebar-component{
  
-    height: 60vh;
+    height: 70%;
 
     padding: 10px;
     display: flex;
@@ -207,8 +192,6 @@ hr{
 #content-card-container{
 
     border: 1px solid palevioletred;
-    margin: 10px;
-
     overflow: auto;
 }
 
@@ -217,8 +200,8 @@ hr{
 
 .content-card{
 
-    width: 45vw;
-    height: 25vh;
+    width: 600px;
+    height: 400px;
 
     margin: 10px;
     padding: 10px;
@@ -270,7 +253,7 @@ hr{
 
 #users-component, #user-list-container{
 
-    height: 60vh;
+    height: 70%;
 
     padding: 10px;
     display: flex;
@@ -284,10 +267,12 @@ hr{
 
 #left-footer-component, #right-footer-component{
 
+    margin: 0;
     padding: 10px;
-    display: flex;    
     
+    display: flex;    
     flex-direction: column;
+    
     gap: 10px;
 }
 
