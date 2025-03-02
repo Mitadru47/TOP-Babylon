@@ -44,7 +44,7 @@ function Sidebar(){
 
                 </div>
 
-                <div id="bottom-user-buttons-container">
+                <div id="sidebar-user-buttons-container">
 
                     <div id="user-buttons-group1">
 
@@ -66,11 +66,9 @@ function Sidebar(){
 
                         </div>
 
-                        <br></br>
-
                         <div id="archived-posts-button-container">
 
-                            <a href="">Archived Posts</a>
+                            <a href="">My Archived Posts</a>
 
                         </div>
 
@@ -79,7 +77,6 @@ function Sidebar(){
                     <div id="user-buttons-group2">
 
                         <a href="">Log out</a>
-                        <hr></hr>
 
                     </div>
 
@@ -104,7 +101,7 @@ function Sidebar(){
 
                 </div>
 
-                <div id="bottom-user-buttons-container">
+                <div id="sidebar-user-buttons-container">
 
                     <div id="user-buttons-group1">
 
@@ -126,11 +123,9 @@ function Sidebar(){
 
                         </div>
 
-                        <br></br>
-
                         <div id="archived-posts-button-container">
 
-                            <a href="">Archived Posts</a>
+                            <a href="">My Archived Posts</a>
 
                         </div>
 

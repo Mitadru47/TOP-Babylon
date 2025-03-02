@@ -1,3 +1,5 @@
+const maxBodyLength = 125; // Upto 125 Characters
+
 function Content(props){
     return(
 
@@ -13,7 +15,11 @@ function Content(props){
             <div className="content-card-middle">
 
                 <div className="post-title">{props.title}</div>
-                <div className="post-body">{props.body}</div>
+                
+                <div className="post-body">
+                    {props.body.length > maxBodyLength ? props.body.substring(0, maxBodyLength) + "..." : props.body}
+                    
+                </div>
 
             </div>
 

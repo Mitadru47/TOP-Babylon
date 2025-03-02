@@ -12,8 +12,16 @@ hr{
 
 .page{
 
+    height: 99.75vh;
+
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.page-top{
+    height: 20vh;
 }
 
 .page-middle{
@@ -23,8 +31,7 @@ hr{
 .page-section{
 
     margin: 10px;
-    border: 1px solid yellowgreen;
-
+    
     display: flex;
     justify-content: space-between;
 }
@@ -40,12 +47,10 @@ hr{
 /* Level 3 | Component Level Elements */
 /* General */
 
-.component{
-    border: 1px solid purple;
-}
-
 #sidebar-component, #users-component{
+    
     margin: 0;
+    border: 1px solid purple;
 }
 
 .hideElement{
@@ -61,7 +66,7 @@ hr{
 
 #login-component{
 
-    height: 85vh;
+    height: 99.75vh;
     display: flex;
 
     align-items: center;
@@ -127,8 +132,9 @@ hr{
 #header-component{
 
     width: 100vw;
+    border: 1px solid purple;
 
-    padding: 10px;
+    padding: 20px;
     display: flex;
 
     justify-content: space-between;
@@ -170,20 +176,33 @@ hr{
  
     height: 70%;
 
-    padding: 10px;
+    padding: 20px;
     display: flex;
 
     flex-direction: column;
 }
 
-#bottom-user-buttons-container{
+#posts-count, #users-count{
+    padding: 2.5px 10px;
+}
+
+#sidebar-user-buttons-container{
 
     height: 60vh;
+    padding: 10px;
     
     display: flex;
     flex-direction: column;
 
     justify-content: space-between;
+}
+
+#user-buttons-group1{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
 }
 
 /* Level 3 | Component Level Elements */
@@ -192,7 +211,11 @@ hr{
 #content-card-container{
 
     border: 1px solid palevioletred;
-    overflow: auto;
+
+    overflow-x: none;
+    overflow-y: scroll;
+
+    scrollbar-width: thin;
 }
 
 /* Level 3 | Component Level Elements */
@@ -201,10 +224,10 @@ hr{
 .content-card{
 
     width: 600px;
-    height: 400px;
+    height: 250px;
 
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
 
     border: 1px solid black;
 
@@ -231,16 +254,25 @@ hr{
 }
 
 .content-card-middle{
-    padding: 10px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
 }
 
 .post-title{
     font-weight: bold;
 }
 
+.post-body{
+    padding: 10px;
+}
+
 .post-buttons{
 
-    padding: 10px;
+    padding: 20px;
 
     display: flex;
     justify-content: end;
@@ -255,7 +287,7 @@ hr{
 
     height: 70%;
 
-    padding: 10px;
+    padding: 20px;
     display: flex;
     
     flex-direction: column;
@@ -267,12 +299,16 @@ hr{
 
 #left-footer-component, #right-footer-component{
 
+    height: 125px;
+    width: 250px;
+
     margin: 0;
-    padding: 10px;
+    padding: 20px;
     
     display: flex;    
     flex-direction: column;
     
+    justify-content: end;
     gap: 10px;
 }
 
