@@ -134,7 +134,6 @@ function Sidebar(){
                     <div id="user-buttons-group2">
 
                         <a href="">Log out</a>
-                        <hr></hr>
 
                     </div>
 

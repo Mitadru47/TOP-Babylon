@@ -21,7 +21,7 @@ hr{
 }
 
 .page-top{
-    height: 20vh;
+    height: 15vh;
 }
 
 .page-middle{
@@ -221,7 +221,7 @@ hr{
 /* Level 3 | Component Level Elements */
 /* Content.jsx */
 
-.content-card{
+.content-card, .skeleton-content-card{
 
     width: 600px;
     height: 250px;
