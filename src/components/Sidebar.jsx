@@ -1,7 +1,7 @@
 import axios from "../utils/axios";
 import { useEffect, useState } from "react";
 
-async function getUserCount(setUserCount){
+async function getTotalUserCount(setUserCount){
 
     axios.get("/users/count")
 
@@ -9,7 +9,7 @@ async function getUserCount(setUserCount){
         .catch((error) => console.log(error));
 }
 
-async function getPostCount(setPostCount){
+async function getTotalPostCount(setPostCount){
 
     axios.get("/posts/count")
 
@@ -24,8 +24,8 @@ function Sidebar(){
 
     useEffect(() => {
 
-        getUserCount(setUserCount);
-        getPostCount(setPostCount);
+        getTotalUserCount(setUserCount);
+        getTotalPostCount(setPostCount);
 
     }, []);
 

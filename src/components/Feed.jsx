@@ -16,7 +16,17 @@ import axios from "../utils/axios";
 import { isLoggedIn } from "../utils/auth.js";
 
 const postsPerPage = 3;
-let pageNumber = 1, activeTimeoutFlag = false, globalPostIdSet = new Set(), globalPostsArr = [];
+
+let totalPostCount = 0, pageNumber = 1, activeTimeoutFlag = false;
+let globalPostIdSet = new Set(), globalPostsArr = [];
+
+async function getTotalPostCount(){
+
+    axios.get("/posts/count")
+
+        .then((response) => totalPostCount = response.data)
+        .catch((error) => console.log(error));
+}
 
 async function getPosts(updatePrimaryPostContainer, setLoaderStatus){
 
@@ -50,7 +60,7 @@ function infiniteScroll(updatePrimaryPostContainer, setLoaderStatus){
 
     if(contentCardContainer.clientHeight + contentCardContainer.scrollTop >= contentCardContainer.scrollHeight - 1){
         
-        if(((pageNumber - 1) * postsPerPage) >= contentCards.length)
+        if(contentCards.length === totalPostCount)
             setLoaderStatus(false);
 
         else if(!activeTimeoutFlag){
@@ -79,8 +89,11 @@ function Feed(){
 
         useEffect(() => {
 
-            if(pageNumber === 1)
+            if(pageNumber === 1){
+
+                getTotalPostCount();
                 getPosts(updatePrimaryPostContainer, setLoaderStatus);
+            }
 
             const contentCardContainer = document.getElementById("content-card-container");
             contentCardContainer.addEventListener("scroll", () => infiniteScroll(updatePrimaryPostContainer, setLoaderStatus));
@@ -88,7 +101,7 @@ function Feed(){
             return () => {
                 contentCardContainer.removeEventListener('scroll', () => infiniteScroll(updatePrimaryPostContainer, setLoaderStatus));
             };
-
+        
         }, []);
 
         return(
@@ -111,7 +124,7 @@ function Feed(){
                     
                     <div id="content-card-container">
 
-                        {primaryPostContainer && primaryPostContainer.posts.map((post, index) => {
+                       {primaryPostContainer && primaryPostContainer.posts.map((post, index) => {
                             
                             return(
                             
