@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { BABYLON_SERVER_URL } from "../utils/urls";
+import { BABYLON_SERVER_URL } from "./constants";
 import { isLoggedIn } from "./auth";
 
 axios.interceptors.request

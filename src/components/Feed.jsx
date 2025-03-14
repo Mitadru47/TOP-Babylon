@@ -15,7 +15,9 @@ import { useEffect, useState } from "react";
 import axios from "../utils/axios";
 import { isLoggedIn } from "../utils/auth.js";
 
-const postsPerPage = 3;
+import { POSTS_PER_PAGE } from "../utils/constants.js";
+
+const postsPerPage = POSTS_PER_PAGE;
 
 let totalPostCount = 0, pageNumber = 1, activeTimeoutFlag = false;
 let globalPostIdSet = new Set(), globalPostsArr = [];

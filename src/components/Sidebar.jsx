@@ -1,6 +1,8 @@
 import axios from "../utils/axios";
 import { useEffect, useState } from "react";
 
+import { POSTS_PER_PAGE } from "../utils/constants";
+
 async function getTotalUserCount(setUserCount){
 
     axios.get("/users/count")
@@ -9,139 +11,83 @@ async function getTotalUserCount(setUserCount){
         .catch((error) => console.log(error));
 }
 
-async function getTotalPostCount(setPostCount){
-
-    axios.get("/posts/count")
-
-        .then((response) => setPostCount(response.data))
-        .catch((error) => console.log(error));
+function getPostCount(setPostCount){
+        
+    const contentCards = document.getElementsByClassName("content-card");
+    setPostCount(contentCards.length);
 }
 
 function Sidebar(){
 
     const [userCount, setUserCount] = useState();
-    const [postCount, setPostCount] = useState();
+    const [postCount, setPostCount] = useState(POSTS_PER_PAGE);
 
     useEffect(() => {
 
         getTotalUserCount(setUserCount);
-        getTotalPostCount(setPostCount);
+
+        const contentCardContainer = document.getElementById("content-card-container");
+        contentCardContainer.addEventListener("scroll", () => getPostCount(setPostCount));
+
+        return () => {
+            contentCardContainer.removeEventListener('scroll', () => getPostCount(setPostCount));
+        };
 
     }, []);
 
-    if(userCount && postCount){
+    return(
 
-        return(
+        <div id="sidebar-component" className="component">
+            
+            <div id="top-info-container">
 
-            <div id="sidebar-component" className="component">
-                
-                <div id="top-info-container">
+                <div id="posts-count">Posts Rendered: { postCount || ".." }</div>
+                <div id="users-count">Total Babylonian Population: { userCount || ".." }</div>
 
-                    <div id="posts-count">Total Posts: {postCount}</div>
-                    <div id="users-count">Total Users: {userCount}</div>
+                <hr></hr>
 
-                    <hr></hr>
-
-                </div>
-
-                <div id="sidebar-user-buttons-container">
-
-                    <div id="user-buttons-group1">
-
-                        <div id="my-profile-button-container">
-
-                            <a href="">My Profile</a>
-
-                        </div>
-
-                        <div id="my-posts-button-container">
-
-                            <a href="">My Posts</a>
-
-                        </div>
-
-                        <div id="my-comments-button-container">
-
-                            <a href="">My Comments</a>
-
-                        </div>
-
-                        <div id="archived-posts-button-container">
-
-                            <a href="">My Archived Posts</a>
-
-                        </div>
-
-                    </div>
-                    
-                    <div id="user-buttons-group2">
-
-                        <a href="">Log out</a>
-
-                    </div>
-
-                </div>
-                
             </div>
-        );
-    }
 
-    else{
+            <div id="sidebar-user-buttons-container">
 
-        return(
+                <div id="user-buttons-group1">
 
-            <div id="sidebar-component" className="component">
-                
-                <div id="top-info-container">
+                    <div id="my-profile-button-container">
 
-                    <div id="posts-count">Total Posts: Loading..</div>
-                    <div id="users-count">Total Users: Loading..</div>
-
-                    <hr></hr>
-
-                </div>
-
-                <div id="sidebar-user-buttons-container">
-
-                    <div id="user-buttons-group1">
-
-                        <div id="my-profile-button-container">
-
-                            <a href="">My Profile</a>
-
-                        </div>
-
-                        <div id="my-posts-button-container">
-
-                            <a href="">My Posts</a>
-
-                        </div>
-
-                        <div id="my-comments-button-container">
-
-                            <a href="">My Comments</a>
-
-                        </div>
-
-                        <div id="archived-posts-button-container">
-
-                            <a href="">My Archived Posts</a>
-
-                        </div>
+                        <a href="">My Profile</a>
 
                     </div>
-                    
-                    <div id="user-buttons-group2">
 
-                        <a href="">Log out</a>
+                    <div id="my-posts-button-container">
+
+                        <a href="">My Posts</a>
+
+                    </div>
+
+                    <div id="my-comments-button-container">
+
+                        <a href="">My Comments</a>
+
+                    </div>
+
+                    <div id="archived-posts-button-container">
+
+                        <a href="">My Archived Posts</a>
 
                     </div>
 
                 </div>
                 
+                <div id="user-buttons-group2">
+
+                    <a href="">Log out</a>
+
+                </div>
+
             </div>
-        );
-    }
+            
+        </div>
+    );
 }
 
 export default Sidebar;
