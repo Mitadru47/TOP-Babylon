@@ -14,6 +14,8 @@ export function logOut(){
 
     localStorage.removeItem("token");
     localStorage.removeItem("expiration");
+
+    localStorage.removeItem("uid");
 }
 
 export function tokenExpiresIn(){       

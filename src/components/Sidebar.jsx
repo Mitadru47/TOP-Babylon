@@ -2,6 +2,7 @@ import axios from "../utils/axios";
 import { useEffect, useState } from "react";
 
 import { POSTS_PER_PAGE } from "../utils/constants";
+import { logOut } from "../utils/auth";
 
 async function getTotalUserCount(setUserCount){
 
@@ -80,7 +81,7 @@ function Sidebar(){
                 
                 <div id="user-buttons-group2">
 
-                    <a href="">Log out</a>
+                    <a href="/login" onClick={() => logOut()}>Log out</a>
 
                 </div>
 
