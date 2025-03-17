@@ -1,11 +1,11 @@
 import axios from "../utils/axios";
 
 import { useEffect, useState } from "react";
-import { isLoggedIn, storeJWT } from "../utils/auth";
+import { isLoggedIn } from "../utils/auth";
 
 import { useNavigate } from "react-router-dom";
 
-function handleLogIn(event, setErrorMessage){
+function handleSignUp(event, setErrorMessage){
 
     event.preventDefault();
 
@@ -14,39 +14,21 @@ function handleLogIn(event, setErrorMessage){
     const formDataObj = Object.fromEntries(formData.entries());
     const formDataStr = JSON.stringify(formDataObj);
 
-    axios.post("/login", formDataStr)
+    axios.post("/signup", formDataStr)
         
         .then((response) => {
             
             if(response.status === 200){
-                
-                storeJWT(response.data);
-                
-                if(isLoggedIn()){
 
-                    const errorLine2 = document.getElementsByClassName("error-line2");
-                    errorLine2[0].style.margin = "0px";
+                const errorLine2 = document.getElementsByClassName("error-line2");
+                errorLine2[0].style.margin = "0px";
 
-                    const errorBlock = document.getElementById("login-error-container");
+                const errorBlock = document.getElementById("signup-error-container");
 
-                    errorBlock.classList.remove("showElement");
-                    errorBlock.classList.add("hideElement");
+                errorBlock.classList.remove("showElement");
+                errorBlock.classList.add("hideElement");
 
-                    setErrorMessage("");
-                }
-
-                else{
-
-                    const errorLine2 = document.getElementsByClassName("error-line2");
-                    errorLine2[0].style.margin = "0px";
-
-                    const errorBlock = document.getElementById("login-error-container");
-
-                    errorBlock.classList.remove("hideElement");
-                    errorBlock.classList.add("showElement");
-
-                    setErrorMessage("Login Failed!");
-                }
+                setErrorMessage("Registered with no errors");
             }
 
             else
@@ -77,7 +59,7 @@ function handleLogIn(event, setErrorMessage){
                     errorLine2[0].style.margin = "0px";
                 }
 
-                const errorBlock = document.getElementById("login-error-container");
+                const errorBlock = document.getElementById("signup-error-container");
 
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
@@ -90,7 +72,7 @@ function handleLogIn(event, setErrorMessage){
                 const errorLine2 = document.getElementsByClassName("error-line2");
                 errorLine2[0].style.margin = "0px";
 
-                const errorBlock = document.getElementById("login-error-container");
+                const errorBlock = document.getElementById("signup-error-container");
 
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
@@ -101,7 +83,7 @@ function handleLogIn(event, setErrorMessage){
     );
 }
 
-function Login(){
+function Signup(){
 
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState();
@@ -110,32 +92,41 @@ function Login(){
 
         if(isLoggedIn())
             navigate("/");
-    
-        else
+
+        if(errorMessage === "Registered with no errors")
             navigate("/login");
 
     }, [errorMessage]);
-   
+
     return(
 
-        <div id="login-component" className="component">
+        <div id="signup-component" className="component">
 
-            <div id="left-login-page-container">
+            <div id="left-signup-page-container">
 
-                <div id="login-header">Babylon</div>
-                <div id="login-header-info">Babylon helps you connect and share with the people in your life.</div>
+                <div id="signup-header">Babylon</div>
+                <div id="signup-header-info">Babylon helps you connect and share with the people in your life.</div>
 
             </div>
 
-            <div id="right-login-page-container">
+            <div id="right-signup-page-container">
 
-                <div id="login-form-container">
+                <div id="signup-form-container">
 
-                    <div id="log-in-info-line1">Already a fellow Babylonian?</div>
-                    <div id="log-in-info-line2">log right in!</div>
+                    <div id="sign-up-info-line1">Wanna be a Babylonian?</div>
+                    <div id="sign-up-info-line2">sign right up!</div>
                     <br></br>
 
-                    <form onSubmit={(event) => handleLogIn(event, setErrorMessage)}>
+                    <form onSubmit={(event) => handleSignUp(event, setErrorMessage)}>
+
+                        <input id="firstName-input" name="firstName" type="text" placeholder="FirstName"/>
+                        <br></br>
+
+                        <input id="lastName-input" name="lastName" type="text" placeholder="LastName"/>
+                        <br></br>
+
+                        <input id="email-input" name="email" type="text" placeholder="Email"/>
+                        <br></br>
 
                         <input id="username-input" name="username" type="text" placeholder="Username"/>
                         <br></br>
@@ -143,11 +134,11 @@ function Login(){
                         <input id="password-input" name="password" type="text" placeholder="Password"/>
                         <br></br>
 
-                        <button id="login-button">Log in</button>
+                        <button id="signup-button">Sign up</button>
 
                     </form>
 
-                    <div id="login-error-container">
+                    <div id="signup-error-container">
                     
                         <div className="error-line1">{errorMessage ? errorMessage : ""}</div>
                         <div className="error-line2">{errorMessage ? "Please try again!" : ""}</div>
@@ -158,8 +149,8 @@ function Login(){
 
                 <div id="sign-up-info-container">
 
-                    <div id="sign-up-info">Wanna be a Babylonian?</div>
-                    <div id="sign-up-link"><a href="/signup">Sign up</a></div>
+                    <div id="sign-up-info">Already a fellow Babylonian?</div>
+                    <div id="sign-up-link"><a href="/login">Log in</a></div>
 
                 </div>
 
@@ -169,4 +160,4 @@ function Login(){
     );
 }
 
-export default Login;
+export default Signup;

@@ -62,9 +62,9 @@ hr{
 }
 
 /* Level 3 | Component Level Elements */
-/* Login.jsx */
+/* Login.jsx & Signup.jsx*/
 
-#login-component{
+#login-component, #signup-component{
 
     height: 99.75vh;
     display: flex;
@@ -75,7 +75,7 @@ hr{
     gap: 2.5px;
 }
 
-#left-login-page-container, #right-login-page-container{
+#left-login-page-container, #right-login-page-container, #left-signup-page-container, #right-signup-page-container{
 
     padding: 2vw;
 
@@ -86,7 +86,7 @@ hr{
     gap: 10px;
 }
 
-#left-login-page-container{
+#left-login-page-container, #left-signup-page-container{
 
     width: 15vw;
     height: 40vh;
@@ -97,7 +97,7 @@ hr{
     padding: 5vw;
 }
 
-#right-login-page-container{
+#right-login-page-container, #right-signup-page-container{
 
     padding-right: 4vw;
 
@@ -105,19 +105,21 @@ hr{
     gap: 50px;
 }
 
-#login-header{
+#login-header, #signup-header{
     font-size: 4rem;
 }
 
-#log-in-info-line2{
+#log-in-info-line2, #sign-up-info-line2{
     margin-left: 10px;
 }
 
-#username-input, #password-input, #login-button{
+#firstName-input, #lastName-input, #email-input, #username-input, #password-input, #signup-button, #login-button{
     margin-top: 2.5px;
 }
 
-#login-error-container{
+#login-error-container, #signup-error-container{
+
+    white-space: pre-wrap;
 
     width: 175px;
     margin-top: 15px;
