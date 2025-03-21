@@ -6,7 +6,6 @@ import RightFooter from "./RightFooter.jsx";
 import Sidebar from "./Sidebar.jsx";
 import Users from "./Users.jsx";
 
-import Loader from "./Loader.jsx";
 import Content from "./Content.jsx";
 
 import Login from "./Login.jsx";
@@ -80,6 +79,17 @@ function infiniteScroll(updatePrimaryPostContainer, setLoaderStatus){
             }, 2500)
         }
     }
+}
+
+function Loader(){
+
+    return(
+
+        <div className="skeleton-content-card">
+            Loading..
+            
+        </div>
+    );
 }
 
 function Feed(){

@@ -12,8 +12,6 @@ hr{
 
 .page{
 
-    height: 99.75vh;
-
     display: flex;
     flex-direction: column;
 
@@ -25,7 +23,7 @@ hr{
 }
 
 .page-middle{
-    height: 80vh;
+    height: 79vh;
 }
 
 .page-section{
@@ -294,6 +292,14 @@ hr{
     
     flex-direction: column;
     gap: 10px;
+}
+
+#user-list-container{
+    
+    overflow-x: none;
+    overflow-y: scroll;
+
+    scrollbar-width: thin;
 }
 
 /* Level 3 | Component Level Elements */
