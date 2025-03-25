@@ -5,7 +5,7 @@ import { isLoggedIn, storeJWT } from "../utils/auth";
 
 import { useNavigate } from "react-router-dom";
 
-function handleLogIn(event, setErrorMessage){
+function handleLogIn(event, setApiResponse){
 
     event.preventDefault();
 
@@ -32,7 +32,7 @@ function handleLogIn(event, setErrorMessage){
                     errorBlock.classList.remove("showElement");
                     errorBlock.classList.add("hideElement");
 
-                    setErrorMessage("");
+                    setApiResponse("");
                 }
 
                 else{
@@ -45,7 +45,7 @@ function handleLogIn(event, setErrorMessage){
                     errorBlock.classList.remove("hideElement");
                     errorBlock.classList.add("showElement");
 
-                    setErrorMessage("Login Failed!");
+                    setApiResponse("Login Failed!");
                 }
             }
 
@@ -82,7 +82,7 @@ function handleLogIn(event, setErrorMessage){
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
 
-                setErrorMessage(compiledErrorMessages);
+                setApiResponse(compiledErrorMessages);
             }
 
             else{
@@ -95,7 +95,7 @@ function handleLogIn(event, setErrorMessage){
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
 
-                setErrorMessage(error.response.data);
+                setApiResponse(error.response.data);
             }
         }
     );
@@ -104,7 +104,7 @@ function handleLogIn(event, setErrorMessage){
 function Login(){
 
     const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState();
+    const [apiResponse, setApiResponse] = useState();
 
     useEffect(() => {
 
@@ -114,7 +114,7 @@ function Login(){
         else
             navigate("/login");
 
-    }, [errorMessage]);
+    }, [apiResponse]);
    
     return(
 
@@ -135,7 +135,7 @@ function Login(){
                     <div id="log-in-info-line2">log right in!</div>
                     <br></br>
 
-                    <form onSubmit={(event) => handleLogIn(event, setErrorMessage)}>
+                    <form onSubmit={(event) => handleLogIn(event, setApiResponse)}>
 
                         <input id="username-input" name="username" type="text" placeholder="Username"/>
                         <br></br>
@@ -149,8 +149,8 @@ function Login(){
 
                     <div id="login-error-container">
                     
-                        <div className="error-line1">{errorMessage ? errorMessage : ""}</div>
-                        <div className="error-line2">{errorMessage ? "Please try again!" : ""}</div>
+                        <div className="error-line1">{apiResponse ? apiResponse : ""}</div>
+                        <div className="error-line2">{apiResponse ? "Please try again!" : ""}</div>
                         
                     </div>
 

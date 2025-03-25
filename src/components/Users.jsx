@@ -4,7 +4,9 @@ import axios from "../utils/axios";
 import { useState, useEffect } from "react";
 import Login from "./Login";
 
-const usernamesPerPage = 20;
+import { USERNAMES_PER_PAGE } from "../utils/constants";
+
+const usernamesPerPage = USERNAMES_PER_PAGE;
 
 let totalUserCount = 0, pageNumber = 1, activeTimeoutFlag = false;
 let globalUsernameSet = new Set();
@@ -35,7 +37,7 @@ async function getUserList(setUserList, setLoaderStatus){
             setUserList({ usernames: Array.from(globalUsernameSet) })
             setLoaderStatus(false);
         })
-        
+
         .catch((error) => console.log(error));
 }
 

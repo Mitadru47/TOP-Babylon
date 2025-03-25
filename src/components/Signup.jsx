@@ -5,7 +5,7 @@ import { isLoggedIn } from "../utils/auth";
 
 import { useNavigate } from "react-router-dom";
 
-function handleSignUp(event, setErrorMessage){
+function handleSignUp(event, setApiResponse){
 
     event.preventDefault();
 
@@ -28,7 +28,7 @@ function handleSignUp(event, setErrorMessage){
                 errorBlock.classList.remove("showElement");
                 errorBlock.classList.add("hideElement");
 
-                setErrorMessage("Registered with no errors");
+                setApiResponse("Registered with no errors");
             }
 
             else
@@ -64,7 +64,7 @@ function handleSignUp(event, setErrorMessage){
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
 
-                setErrorMessage(compiledErrorMessages);
+                setApiResponse(compiledErrorMessages);
             }
 
             else{
@@ -77,7 +77,7 @@ function handleSignUp(event, setErrorMessage){
                 errorBlock.classList.remove("hideElement");
                 errorBlock.classList.add("showElement");
 
-                setErrorMessage(error.response.data);
+                setApiResponse(error.response.data);
             }
         }
     );
@@ -86,17 +86,17 @@ function handleSignUp(event, setErrorMessage){
 function Signup(){
 
     const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState();
+    const [apiResponse, setApiResponse] = useState();
 
     useEffect(() => {
 
         if(isLoggedIn())
             navigate("/");
 
-        if(errorMessage === "Registered with no errors")
+        if(apiResponse === "Registered with no errors")
             navigate("/login");
 
-    }, [errorMessage]);
+    }, [apiResponse]);
 
     return(
 
@@ -117,7 +117,7 @@ function Signup(){
                     <div id="sign-up-info-line2">sign right up!</div>
                     <br></br>
 
-                    <form onSubmit={(event) => handleSignUp(event, setErrorMessage)}>
+                    <form onSubmit={(event) => handleSignUp(event, setApiResponse)}>
 
                         <input id="firstName-input" name="firstName" type="text" placeholder="FirstName"/>
                         <br></br>
@@ -140,8 +140,8 @@ function Signup(){
 
                     <div id="signup-error-container">
                     
-                        <div className="error-line1">{errorMessage ? errorMessage : ""}</div>
-                        <div className="error-line2">{errorMessage ? "Please try again!" : ""}</div>
+                        <div className="error-line1">{apiResponse ? apiResponse : ""}</div>
+                        <div className="error-line2">{apiResponse ? "Please try again!" : ""}</div>
                         
                     </div>
 
