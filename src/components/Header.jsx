@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { isLoggedIn, tokenExpiresIn } from "../utils/auth";
 import Login from "../components/Login";
 
+import moment from "moment";
+
 async function getUsername(setUsername){
 
     axios.get("/users/" + localStorage.getItem("uid"))
@@ -24,7 +26,7 @@ function Header(){
             getUsername(setUsername);
 
             const intervalID = setInterval(() => {
-                setTimestamp(() => new Date().toUTCString());
+                setTimestamp(() => moment().format('LLLL'));
 
             }, 1000);
 

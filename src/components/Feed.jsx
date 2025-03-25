@@ -137,7 +137,7 @@ function Feed(){
                     <div id="content-card-container">
 
                        {primaryPostContainer && primaryPostContainer.posts.map((post, index) => {
-                            
+                        
                             return(
                             
                                 <Content 
@@ -145,7 +145,7 @@ function Feed(){
                                     key={"content" + (index + 1)}
 
                                     author={post.author.username} 
-                                    date={post.dateEdited}
+                                    date={post.momentDateEdited}
 
                                     title={post.title}
                                     body={post.body}
