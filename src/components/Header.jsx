@@ -8,7 +8,7 @@ import moment from "moment";
 
 async function getUsername(setUsername){
 
-    axios.get("/users/" + localStorage.getItem("uid"))
+    axios.get("/users/" + localStorage.getItem("uid") + "/username")
 
         .then((response) => setUsername(response.data))
         .catch((error) => console.log(error));

@@ -3,12 +3,13 @@ import "./styles/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Feed from "./components/Feed.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Feed from "./components/Feed.jsx";
+import UserDetail from "./components/UserDetail.jsx";
 
 const router = createBrowserRouter([
 
@@ -30,6 +31,13 @@ const router = createBrowserRouter([
 
     path: "/",
     element: <Feed />
+
+  },
+
+  {
+
+    path: "/users/:userid",
+    element: <UserDetail />
 
   }
 

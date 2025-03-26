@@ -1,3 +1,6 @@
+import axios from "../utils/axios";
+import Login from "./Login.jsx";
+
 import Header from "./Header.jsx";
 
 import LeftFooter from "./LeftFooter.jsx";
@@ -8,10 +11,7 @@ import Users from "./Users.jsx";
 
 import Content from "./Content.jsx";
 
-import Login from "./Login.jsx";
 import { useEffect, useState } from "react";
-
-import axios from "../utils/axios";
 import { isLoggedIn } from "../utils/auth.js";
 
 import { POSTS_PER_PAGE } from "../utils/constants.js";
