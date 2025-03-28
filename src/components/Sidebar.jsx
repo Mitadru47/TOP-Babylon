@@ -4,8 +4,6 @@ import Login from "./Login.jsx";
 import { useEffect, useState } from "react";
 import { isLoggedIn, logOut } from "../utils/auth";
 
-import { POSTS_PER_PAGE } from "../utils/constants";
-
 async function getTotalUserCount(setUserCount){
 
     axios.get("/users/count")
@@ -20,23 +18,26 @@ function getPostCount(setPostCount){
     setPostCount(contentCards.length);
 }
 
-function Sidebar(){
+function Sidebar(props){
 
     if(isLoggedIn()){
 
         const [userCount, setUserCount] = useState();
-        const [postCount, setPostCount] = useState(POSTS_PER_PAGE);
+        const [postCount, setPostCount] = useState();
 
         useEffect(() => {
 
-            getTotalUserCount(setUserCount);
+            if(props.pageName.includes("Feed")){
+            
+                getTotalUserCount(setUserCount);
 
-            const contentCardContainer = document.getElementById("content-card-container");
-            contentCardContainer.addEventListener("scroll", () => getPostCount(setPostCount));
+                const contentCardContainer = document.getElementById("content-card-container");
+                contentCardContainer.addEventListener("scroll", () => getPostCount(setPostCount));
 
-            return () => {
-                contentCardContainer.removeEventListener('scroll', () => getPostCount(setPostCount));
-            };
+                return () => {
+                    contentCardContainer.removeEventListener('scroll', () => getPostCount(setPostCount));
+                };
+            }
 
         }, []);
 
@@ -46,8 +47,15 @@ function Sidebar(){
                 
                 <div id="top-info-container">
 
-                    <div id="posts-count">Posts Rendered: { postCount || ".." }</div>
-                    <div id="users-count">Total Babylonian Population: { userCount || ".." }</div>
+                    <div id="sidebar-info-line1">
+                        {(postCount && "Your Feed has " + postCount + " posts") || props.pageName}
+            
+                    </div>
+                        
+                    <div id="sidebar-info-line2">
+                        {(userCount && "Total Babylonian Population: " + (userCount || "..")) || props.pageDescription}
+                           
+                    </div>
 
                     <hr></hr>
 

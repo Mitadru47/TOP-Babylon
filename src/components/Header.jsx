@@ -42,7 +42,7 @@ function Header(){
                 
                 <div id="site-title-container">
 
-                    <div id="site-title">Babylon</div>
+                    <div id="site-title"><a href="/">Babylon</a></div>
 
                 </div>
                 

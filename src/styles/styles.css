@@ -141,8 +141,16 @@ hr{
     align-items: center;
 }
 
-#site-title{
+#site-title a{
+
+    text-decoration: none;
+    color: black;
+
     font-size: 3rem;
+}
+
+#site-title a:hover{
+    text-decoration: underline dotted;
 }
 
 #greeting-date-time-container{
@@ -182,8 +190,18 @@ hr{
     flex-direction: column;
 }
 
-#posts-count, #users-count{
+#sidebar-info-line1, #sidebar-info-line2{
     padding: 2.5px 10px;
+}
+
+#sidebar-info-line1{
+    font-size: 1.1rem;
+}
+
+#sidebar-info-line2{
+
+    padding-left: 12.5px;
+    font-size: 0.8rem;
 }
 
 #sidebar-user-buttons-container{

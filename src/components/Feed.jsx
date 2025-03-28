@@ -129,7 +129,7 @@ function Feed(){
 
                     <div className="page-left-bottom">
 
-                        <Sidebar />
+                        <Sidebar pageName="Your Feed" pageDescription="Crunching some cool stats.." />
                         <LeftFooter />
 
                     </div>
