@@ -86,12 +86,10 @@ hr{
 
 #left-login-page-container, #left-signup-page-container{
 
-    width: 15vw;
+    width: 35vw;
     height: 40vh;
 
     border: 2.5px solid tomato;
-
-    width: 35vw;
     padding: 5vw;
 }
 
@@ -230,9 +228,15 @@ hr{
 
     border: 1px solid palevioletred;
 
-    overflow-x: none;
-    overflow-y: scroll;
+    width: 100vw;
+    margin: 0px 20px;
 
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+
+    overflow-y: scroll;
     scrollbar-width: thin;
 }
 
@@ -381,7 +385,7 @@ hr{
 #user-detail-container{
 
     border: 1px solid palevioletred;
-    width: 85vw;
-
-    margin-left: 20px;
+    
+    width: 100vw;
+    margin: 0px 20px;
 }
