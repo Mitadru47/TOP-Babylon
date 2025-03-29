@@ -61,7 +61,75 @@ function UserDetail(){
                     
                     <div id="user-detail-container">
 
-                        {userDetail && "Loading.."}
+                        <form id="user-detail-form">
+
+
+                            <div className="user-detail-form-group">
+
+                                <div id="dateJoined-container">
+
+                                    <label className="user-detail-label" htmlFor="dateJoined">Date Joined</label> <br></br>
+                                    <input id="dateJoined" className="user-detail-input" name="dateJoined" placeholder=".." defaultValue={userDetail && userDetail.dateJoined} disabled/>
+
+                                </div>
+
+                                <div id="email-container">
+                            
+                                    <label className="user-detail-label" htmlFor="email">Email</label> <br></br>
+                                    <input id="email" className="user-detail-input" name="email" placeholder=".." defaultValue={userDetail && userDetail.email}/>
+                                
+                                </div>
+
+                            </div>
+
+                            <div className="user-detail-form-group">
+
+                                <div id="firstName-container">
+                                
+                                    <label className="user-detail-label" htmlFor="firstName">First Name</label> <br></br>
+                                    <input id="firstName" className="user-detail-input" name="firstName" placeholder=".." defaultValue={userDetail && userDetail.firstName}/>
+                                
+                                </div>
+
+                                <div id="lastName-container">
+                                
+                                    <label className="user-detail-label" htmlFor="lastName">Last Name</label> <br></br>
+                                    <input id="lastName" className="user-detail-input" name="lastName" placeholder=".." defaultValue={userDetail && userDetail.lastName}/>
+                                
+                                </div>
+
+                            </div>
+
+                            <div className="user-detail-form-group">
+
+                                <div id="username-container">
+                                
+                                    <label className="user-detail-label" htmlFor="username">Username</label> <br></br>
+                                    <input id="username" className="user-detail-input" name="username" placeholder=".." defaultValue={userDetail && userDetail.username}/>
+                                
+                                </div>
+
+                                <div id="password-container">
+                                
+                                    <label className="user-detail-label" htmlFor="password">Password</label> <br></br>
+                                    <input id="password" className="user-detail-input" name="password" placeholder=".." defaultValue={userDetail && userDetail.password}/>
+                                
+                                </div>
+
+                            </div>
+
+                            <br></br>
+                            <br></br>
+
+                            <div className="user-detail-form-buttons">
+
+                                <button id="user-detail-update-button">Update Details</button>
+                                <button id="user-detail-delete-button">Terminate Citizenship</button>
+
+                            </div>
+
+                            
+                        </form>
 
                     </div>
 
