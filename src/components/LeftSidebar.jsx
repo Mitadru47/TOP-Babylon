@@ -1,8 +1,8 @@
-import axios from "../utils/axios";
+import axios from "../utils/axios.js";
 import Login from "./Login.jsx";
 
 import { useEffect, useState } from "react";
-import { isLoggedIn, logOut } from "../utils/auth";
+import { isLoggedIn, logOut } from "../utils/auth.js";
 
 async function getTotalUserCount(setUserCount){
 
@@ -18,7 +18,7 @@ function getPostCount(setPostCount){
     setPostCount(contentCards.length);
 }
 
-function Sidebar(props){
+function LeftSidebar(props){
 
     if(isLoggedIn()){
 
@@ -43,16 +43,16 @@ function Sidebar(props){
 
         return(
 
-            <div id="sidebar-component" className="component">
+            <div id="left-sidebar-component" className="component">
                 
                 <div id="top-info-container">
 
-                    <div id="sidebar-info-line1">
+                    <div id="left-sidebar-info-line1">
                         {(postCount && "Your Feed has " + postCount + " posts") || props.pageName}
             
                     </div>
                         
-                    <div id="sidebar-info-line2">
+                    <div id="left-sidebar-info-line2">
                         {(userCount && "Total Babylonian Population: " + (userCount || "..")) || props.pageDescription}
                            
                     </div>
@@ -61,7 +61,7 @@ function Sidebar(props){
 
                 </div>
 
-                <div id="sidebar-user-buttons-container">
+                <div id="left-sidebar-user-buttons-container">
 
                     <div id="user-buttons-group1">
 
@@ -107,4 +107,4 @@ function Sidebar(props){
         return <Login />;
 }
 
-export default Sidebar;
+export default LeftSidebar;

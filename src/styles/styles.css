@@ -45,7 +45,7 @@ hr{
 /* Level 3 | Component Level Elements */
 /* General */
 
-#sidebar-component, #users-component{
+#left-sidebar-component, #right-sidebar-component{
     
     margin: 0;
     border: 1px solid purple;
@@ -178,9 +178,9 @@ hr{
 }
 
 /* Level 3 | Component Level Elements */
-/* Sidebar.jsx */
+/* LeftSidebar.jsx */
 
-#sidebar-component{
+#left-sidebar-component{
  
     height: 70%;
 
@@ -190,21 +190,21 @@ hr{
     flex-direction: column;
 }
 
-#sidebar-info-line1, #sidebar-info-line2{
+#left-sidebar-info-line1, #left-sidebar-info-line2{
     padding: 2.5px 10px;
 }
 
-#sidebar-info-line1{
+#left-sidebar-info-line1{
     font-size: 1.1rem;
 }
 
-#sidebar-info-line2{
+#left-sidebar-info-line2{
 
     padding-left: 12.5px;
     font-size: 0.8rem;
 }
 
-#sidebar-user-buttons-container{
+#left-sidebar-user-buttons-container{
 
     height: 60vh;
     padding: 10px;
@@ -299,9 +299,9 @@ hr{
 }
 
 /* Level 3 | Component Level Elements */
-/* Users.jsx */
+/* RightSidebar.jsx */
 
-#users-component, #user-list-container{
+#right-sidebar-component, #user-list-container{
 
     height: 70%;
 
@@ -310,6 +310,10 @@ hr{
     
     flex-direction: column;
     gap: 10px;
+}
+
+#user-list-container{
+    height: 80%;
 }
 
 #user-list-container{
@@ -369,4 +373,15 @@ hr{
     flex-direction: column;
 
     font-size: 0.8rem;
+}
+
+/* Level 3 | Component Level Elements */
+/* UserDetail.jsx */
+
+#user-detail-container{
+
+    border: 1px solid palevioletred;
+    width: 85vw;
+
+    margin-left: 20px;
 }

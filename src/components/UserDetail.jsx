@@ -8,8 +8,18 @@ import { isLoggedIn } from "../utils/auth";
 import Login from "./Login";
 import Header from "./Header";
 
+import LeftSidebar from "./LeftSidebar.jsx";
+
 import LeftFooter from "./LeftFooter.jsx";
-import Sidebar from "./Sidebar.jsx";
+import RightFooter from "./RightFooter.jsx";
+
+import { USERNAMES_PER_PAGE } from "../utils/constants";
+
+const usernamesPerPage = USERNAMES_PER_PAGE;
+const placeholderList = [];
+
+for(let i=0; i<usernamesPerPage; i++)
+    placeholderList.push("...");
 
 async function getUserDetail(userId, setUserDetail){
 
@@ -44,7 +54,7 @@ function UserDetail(){
 
                     <div className="page-left-bottom">
 
-                        <Sidebar pageName="Your Profile" pageDescription="Your Babylonian citizenship papers." />
+                        <LeftSidebar pageName="Your Profile" pageDescription="Your Babylonian citizenship papers" />
                         <LeftFooter />
 
                     </div>
@@ -52,6 +62,23 @@ function UserDetail(){
                     <div id="user-detail-container">
 
                         {userDetail && "Loading.."}
+
+                    </div>
+
+                    <div className="page-right-bottom">
+
+                        <div id="right-sidebar-component" className="component">
+
+                            <div id="user-list-container">
+                    
+                                { placeholderList.map((placeholder, index) => {
+                                return(<div key={"user" + (index + 1)} className="user-list-item">{placeholder}</div>); })}
+
+                            </div>
+
+                        </div>
+
+                        <RightFooter />
 
                     </div>
 

@@ -6,8 +6,8 @@ import Header from "./Header.jsx";
 import LeftFooter from "./LeftFooter.jsx";
 import RightFooter from "./RightFooter.jsx";
 
-import Sidebar from "./Sidebar.jsx";
-import Users from "./Users.jsx";
+import LeftSidebar from "./LeftSidebar.jsx";
+import RightSidebar from "./RightSidebar.jsx";
 
 import Content from "./Content.jsx";
 
@@ -129,7 +129,7 @@ function Feed(){
 
                     <div className="page-left-bottom">
 
-                        <Sidebar pageName="Your Feed" pageDescription="Crunching some cool stats.." />
+                        <LeftSidebar pageName="Your Feed" pageDescription="Crunching some cool stats.." />
                         <LeftFooter />
 
                     </div>
@@ -160,7 +160,7 @@ function Feed(){
 
                     <div className="page-right-bottom">
 
-                        <Users />                   
+                        <RightSidebar />                   
                         <RightFooter />
 
                     </div>

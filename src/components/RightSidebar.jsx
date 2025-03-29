@@ -7,6 +7,10 @@ import Login from "./Login";
 import { USERNAMES_PER_PAGE } from "../utils/constants";
 
 const usernamesPerPage = USERNAMES_PER_PAGE;
+const placeholderList = [];
+
+for(let i=0; i<usernamesPerPage; i++)
+    placeholderList.push("...");
 
 let totalUserCount = 0, pageNumber = 1, activeTimeoutFlag = false;
 let globalUsernameSet = new Set();
@@ -68,7 +72,7 @@ function infiniteScroll(setUserList, setLoaderStatus){
     }
 }
 
-function Users(){
+function RightSidebar(){
 
     if(isLoggedIn()){
 
@@ -92,7 +96,7 @@ function Users(){
 
         return(
 
-            <div id="users-component" className="component">
+            <div id="right-sidebar-component" className="component">
                 
                 <div id="user-list-header-container">
                 
@@ -105,7 +109,8 @@ function Users(){
                     { userList && userList.usernames.map((user, index) => {
                         return(<div key={"user" + (index + 1)} className="user-list-item">{user}</div>); })}
 
-                    { loaderStatus && "..." }
+                    { loaderStatus && placeholderList.map((placeholder, index) => {
+                        return(<div key={"user" + (index + 1)} className="user-list-item">{placeholder}</div>); })}
 
                 </div>
 
@@ -117,4 +122,4 @@ function Users(){
         return <Login />;
 }
 
-export default Users;
+export default RightSidebar;
