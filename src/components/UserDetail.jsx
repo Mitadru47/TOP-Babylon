@@ -13,6 +13,27 @@ import LeftSidebar from "./LeftSidebar.jsx";
 import LeftFooter from "./LeftFooter.jsx";
 import RightFooter from "./RightFooter.jsx";
 
+
+async function getPostCount(userId, setPostCount){
+
+    const data = JSON.stringify({ authorId: userId });
+
+    axios.post("/posts/count", data)
+
+        .then((response) => setPostCount(response.data))
+        .catch((error) => console.log(error));
+}
+
+async function getCommentCount(userId, setCommentCount){
+
+    const data = JSON.stringify({ authorId: userId });
+
+    axios.post("/comments/count", data)
+
+        .then((response) => setCommentCount(response.data))
+        .catch((error) => console.log(error));
+}
+
 async function getUserDetail(userId, setUserDetail){
 
     axios.get("/users/" + userId)
@@ -26,9 +47,16 @@ function UserDetail(){
     if(isLoggedIn()){
 
         const { userid: userId } = useParams();
-        const [ userDetail, setUserDetail ] = useState();
+        const [userDetail, setUserDetail] = useState();
+        
+        const [postCount, setPostCount] = useState();
+        const [commentCount, setCommentCount] = useState();
 
         useEffect(() => {
+
+            getPostCount(userId, setPostCount);
+            getCommentCount(userId, setCommentCount);
+
             getUserDetail(userId, setUserDetail);
 
         }, []);
@@ -137,9 +165,9 @@ function UserDetail(){
 
                             <div id="user-stats-container">
                     
-                                <div className="user-stats-item">Posts: 0</div>
-                                <div className="user-stats-item">Comments: 0</div>
-                                
+                                <div className="user-stats-item">Posts: {postCount || "0"}</div>
+                                <div className="user-stats-item">Comments: {commentCount || "0"}</div>
+
                             </div>
 
                         </div>
