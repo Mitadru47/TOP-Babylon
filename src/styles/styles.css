@@ -305,7 +305,7 @@ hr{
 /* Level 3 | Component Level Elements */
 /* RightSidebar.jsx */
 
-#right-sidebar-component, #user-list-container{
+#right-sidebar-component, #user-list-container, #user-stats-container{
 
     height: 70%;
 
@@ -313,14 +313,12 @@ hr{
     display: flex;
     
     flex-direction: column;
-    gap: 10px;
 }
 
 #user-list-container{
+    
     height: 80%;
-}
-
-#user-list-container{
+    gap: 10px;
     
     overflow-x: none;
     overflow-y: scroll;
@@ -328,6 +326,12 @@ hr{
     scrollbar-width: thin;
 }
 
+#user-stats-container{
+    
+    height: 60vh;
+    gap: 10px;
+}
+    
 /* Level 3 | Component Level Elements */
 /* LeftFooter.jsx, RightFooter.jsx */
 

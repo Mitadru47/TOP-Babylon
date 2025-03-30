@@ -13,14 +13,6 @@ import LeftSidebar from "./LeftSidebar.jsx";
 import LeftFooter from "./LeftFooter.jsx";
 import RightFooter from "./RightFooter.jsx";
 
-import { USERNAMES_PER_PAGE } from "../utils/constants";
-
-const usernamesPerPage = USERNAMES_PER_PAGE;
-const placeholderList = [];
-
-for(let i=0; i<usernamesPerPage; i++)
-    placeholderList.push("...");
-
 async function getUserDetail(userId, setUserDetail){
 
     axios.get("/users/" + userId)
@@ -137,11 +129,17 @@ function UserDetail(){
 
                         <div id="right-sidebar-component" className="component">
 
-                            <div id="user-list-container">
-                    
-                                { placeholderList.map((placeholder, index) => {
-                                return(<div key={"user" + (index + 1)} className="user-list-item">{placeholder}</div>); })}
+                            <div id="user-stats-header-container">
+                        
+                                <div id="user-stats-header">Deeds from your time in Babylon</div>
+                        
+                            </div>
 
+                            <div id="user-stats-container">
+                    
+                                <div className="user-stats-item">Posts: 0</div>
+                                <div className="user-stats-item">Comments: 0</div>
+                                
                             </div>
 
                         </div>
