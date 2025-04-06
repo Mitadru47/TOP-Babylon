@@ -83,7 +83,6 @@ function UserDetail(){
 
                         <form id="user-detail-form">
 
-
                             <div className="user-detail-form-group">
 
                                 <div id="dateJoined-container">
@@ -148,7 +147,6 @@ function UserDetail(){
 
                             </div>
 
-                            
                         </form>
 
                     </div>

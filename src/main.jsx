@@ -9,7 +9,9 @@ import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 
 import Feed from "./components/Feed.jsx";
+
 import UserDetail from "./components/UserDetail.jsx";
+import PostDetail from "./components/PostDetail.jsx";
 
 const router = createBrowserRouter([
 
@@ -38,6 +40,13 @@ const router = createBrowserRouter([
 
     path: "/users/:userid",
     element: <UserDetail />
+
+  },
+
+  {
+
+    path: "/posts/:postid",
+    element: <PostDetail />
 
   }
 

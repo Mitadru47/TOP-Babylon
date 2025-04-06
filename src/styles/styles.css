@@ -305,7 +305,7 @@ hr{
 /* Level 3 | Component Level Elements */
 /* RightSidebar.jsx */
 
-#right-sidebar-component, #user-list-container, #user-stats-container{
+#right-sidebar-component, #user-list-container, #user-stats-container, #author-stats-container{
 
     height: 70%;
 
@@ -326,7 +326,7 @@ hr{
     scrollbar-width: thin;
 }
 
-#user-stats-container{
+#user-stats-container, #author-stats-container{
     
     height: 60vh;
     gap: 10px;
@@ -425,4 +425,16 @@ hr{
 
     display: flex;
     gap: 20px;
+}
+
+/* Level 3 | Component Level Elements */
+/* PostDetail.jsx */
+
+#post-detail-container{
+
+    width: 100vw;
+    border: 1px solid palevioletred;
+    
+    margin: 0px 20px;
+    padding: 20px;
 }

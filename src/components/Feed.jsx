@@ -23,7 +23,7 @@ let globalPostIdSet = new Set(), globalPostsArr = [];
 
 async function getTotalPostCount(){
 
-    axios.get("/posts/count")
+    axios.post("/posts/count")
 
         .then((response) => totalPostCount = response.data)
         .catch((error) => console.log(error));
@@ -142,6 +142,7 @@ function Feed(){
                             
                                 <Content 
                                 
+                                    id={post._id}
                                     key={"content" + (index + 1)}
 
                                     author={post.author.username} 
