@@ -13,11 +13,38 @@ import LeftSidebar from "./LeftSidebar.jsx";
 import LeftFooter from "./LeftFooter.jsx";
 import RightFooter from "./RightFooter.jsx";
 
-async function getPostDetail(postId, setPostDetail){
+async function getPostCount(userId, setPostCount){
+
+    const data = JSON.stringify({ authorId: userId });
+
+    axios.post("/posts/count", data)
+
+        .then((response) => setPostCount(response.data))
+        .catch((error) => console.log(error));
+}
+
+async function getCommentCount(userId, setCommentCount){
+
+    const data = JSON.stringify({ authorId: userId });
+
+    axios.post("/comments/count", data)
+
+        .then((response) => setCommentCount(response.data))
+        .catch((error) => console.log(error));
+}
+
+async function getPostDetail(postId, setPostCount, setCommentCount, setPostDetail){
 
     axios.get("/posts/" + postId)
 
-        .then((response) => setPostDetail(response.data))
+        .then((response) => {
+            
+            getPostCount(response.data.author._id, setPostCount);
+            getCommentCount(response.data.author._id, setCommentCount);
+            
+            setPostDetail(response.data);
+        })
+        
         .catch((error) => console.log(error));
 }
 
@@ -28,7 +55,10 @@ function PostDetail(){
         const { postid: postId } = useParams();
         const [postDetail, setPostDetail] = useState();
 
-        useEffect(() => { getPostDetail(postId, setPostDetail); }, []);
+        const [postCount, setPostCount] = useState();
+        const [commentCount, setCommentCount] = useState();
+
+        useEffect(() => { getPostDetail(postId, setPostCount, setCommentCount, setPostDetail); }, []);
 
         return(
 
@@ -110,8 +140,8 @@ function PostDetail(){
 
                             <div id="author-stats-container">
                     
-                                <div className="author-stats-item">Posts: {"0"}</div>
-                                <div className="author-stats-item">Comments: {"0"}</div>
+                                <div className="author-stats-item">Posts: {postCount || "0"}</div>
+                                <div className="author-stats-item">Comments: {commentCount || "0"}</div>
 
                             </div>
 
