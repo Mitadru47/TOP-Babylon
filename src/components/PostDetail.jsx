@@ -57,9 +57,46 @@ function PostDetail(){
                     
                     <div id="post-detail-container">
 
-                        {postDetail && postDetail.title}
+                        <div id="post-detail">
 
+                            <div id="post-detail-top-section">
+
+                                <div id="post-detail-title">{postDetail && postDetail.title}</div>
+                                <div id="post-detail-body">{postDetail && postDetail.body}</div>
+
+                            </div>
+                           
+                            <div id="post-detail-bottom-section">
+
+                                <div id="post-detail-author">Authored By: {postDetail && postDetail.author.username}</div>
+
+                                <div id="post-detail-dates">
+
+                                    <div id="post-detail-created">Created: {postDetail && postDetail.dateCreated}</div>
+
+                                    <div id="post-detail-edited">
+                                        
+                                        {postDetail && (postDetail.dateEdited === postDetail.dateCreated ? 
+                                            "Never Edited" : `Last Edited: ${postDetail && postDetail.dateEdited}`)}
+                                        
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                        <div id="comment-section">
+                                    
+                            <div id="comment-creator"></div>
+                            <div id="comment-container"></div>
+
+                        </div>
+
+                        
                     </div>
+
 
                     <div className="page-right-bottom">
 

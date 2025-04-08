@@ -436,5 +436,53 @@ hr{
     border: 1px solid palevioletred;
     
     margin: 0px 20px;
+    padding: 10px;
+}
+
+#post-detail, #comment-section{
+
     padding: 20px;
+
+    border: 1px solid purple;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+#post-detail-top-section{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+#post-detail-title{
+    font-size: 1.75rem;
+}
+
+#post-detail-author{
+    font-size: 1.1rem;
+}
+
+#post-detail-bottom-section{
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: end;
+}
+
+#post-detail-dates{
+
+    font-size: 0.75rem;
+    
+    display: flex;
+    flex-direction: column;
+    
+    align-items: end;
+    gap: 5px;
 }
