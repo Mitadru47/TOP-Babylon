@@ -13,6 +13,9 @@ import LeftSidebar from "./LeftSidebar.jsx";
 import LeftFooter from "./LeftFooter.jsx";
 import RightFooter from "./RightFooter.jsx";
 
+import CommentCreator from "./CommentCreator.jsx";
+import Comment from "./Comment.jsx";
+
 async function getPostCount(userId, setPostCount){
 
     const data = JSON.stringify({ authorId: userId });
@@ -30,6 +33,14 @@ async function getCommentCount(userId, setCommentCount){
     axios.post("/comments/count", data)
 
         .then((response) => setCommentCount(response.data))
+        .catch((error) => console.log(error));
+}
+
+async function getComments(postId, setComments){
+
+    axios.get("/comments/" + postId)
+
+        .then((response) => setComments(response.data))
         .catch((error) => console.log(error));
 }
 
@@ -53,12 +64,19 @@ function PostDetail(){
     if(isLoggedIn()){
 
         const { postid: postId } = useParams();
+
+        const [comments, setComments] = useState();
         const [postDetail, setPostDetail] = useState();
 
         const [postCount, setPostCount] = useState();
         const [commentCount, setCommentCount] = useState();
 
-        useEffect(() => { getPostDetail(postId, setPostCount, setCommentCount, setPostDetail); }, []);
+        useEffect(() => { 
+            
+            getComments(postId, setComments);
+            getPostDetail(postId, setPostCount, setCommentCount, setPostDetail);
+        
+        }, []);
 
         return(
 
@@ -119,8 +137,10 @@ function PostDetail(){
 
                         <div id="comment-section">
                                     
-                            <div id="comment-creator"></div>
-                            <div id="comment-container"></div>
+                            <CommentCreator />
+
+                            { comments && comments.map((comment, index) => {
+                                return <Comment key={"comment" + (index + 1)} comment={comment} />; }) }
 
                         </div>
 
