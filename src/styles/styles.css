@@ -460,6 +460,8 @@ hr{
 }
 
 #comment-section{
+
+    padding: 10px;
     gap: 20px;
 }
 
@@ -505,14 +507,67 @@ hr{
     
     padding: 20px;
     border: 1px solid brown;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+#comment-creator-form{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+#comment-creator-top{
+    
+    display: flex;
+    flex-direction: column;
+
+    gap: 2.5px;
+}
+
+#comment-creator-title, #comment-creator-body{
+
+    padding: 5px;
+    font-family: Arial;
+}
+
+#comment-creator-bottom{
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#comment-creator-identifiers, #comment-creator-buttons{
+
+    display: flex;
+    gap: 5px;
+}
+
+#comment-creator-identifiers label{
+    font-size: 0.8rem;
+}
+
+#comment-creator-buttons{
+
+    display: flex;
+    gap: 5px;
 }
 
 /* Level 3 | Component Level Elements */
 /* Comment.jsx */
 
+#comment-creator-header{
+    font-size: 1.1rem;
+}
+
 .comment{
 
-    padding: 10px;
+    padding: 20px;
     border: 1px solid green;
 
     display: flex;
