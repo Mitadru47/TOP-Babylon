@@ -28,9 +28,9 @@ function Content(props){
 
                 <div className="post-buttons">
 
-                    <div className="post-button1"><a href={"/posts/" + props.id}>View</a></div>
-                    <div className="post-button1"><a href="">Comment</a></div>
-                    <div className="post-button1"><a href="">Archive</a></div>
+                    <div className="post-button"><a href={"/posts/" + props.id}>View</a></div>
+                    <div className="post-button"><a href="">Comment</a></div>
+                    <div className="post-button"><a href="">Archive</a></div>
 
                 </div>
 

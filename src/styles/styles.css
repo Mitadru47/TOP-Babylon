@@ -5,7 +5,7 @@ body{
 }
 
 hr{
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 /* Level 2 | Page Level Elements */
@@ -189,7 +189,7 @@ hr{
 }
 
 #left-sidebar-info-line1, #left-sidebar-info-line2{
-    padding: 2.5px 10px;
+    padding: 2.5px 2.5px;
 }
 
 #left-sidebar-info-line1{
@@ -198,7 +198,7 @@ hr{
 
 #left-sidebar-info-line2{
 
-    padding-left: 12.5px;
+    padding-left: 5px;
     font-size: 0.8rem;
 }
 
@@ -502,9 +502,7 @@ hr{
 /* CommentCreator.jsx */
 
 #comment-creator{
-
-    height: 100px;
-
+    
     padding: 20px;
     border: 1px solid brown;
 }
@@ -512,8 +510,55 @@ hr{
 /* Level 3 | Component Level Elements */
 /* Comment.jsx */
 
-#comment-container{
+.comment{
 
     padding: 10px;
     border: 1px solid green;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 50px;
+}
+
+.comment-top{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.comment-title{
+    font-size: 0.8rem;
+}
+
+.comment-bottom{
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: end;
+}
+
+.comment-info{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.comment-dates{
+
+    display: flex;
+
+    gap: 10px;
+    font-size: 0.75rem;
+}
+
+.comment-buttons{
+
+    display: flex;
+    gap: 20px;
 }

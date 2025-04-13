@@ -137,7 +137,7 @@ function PostDetail(){
 
                         <div id="comment-section">
                                     
-                            <CommentCreator />
+                            <CommentCreator postId={postId} authorId={localStorage.getItem("uid")}/>
 
                             { comments && comments.map((comment, index) => {
                                 return <Comment key={"comment" + (index + 1)} comment={comment} />; }) }
