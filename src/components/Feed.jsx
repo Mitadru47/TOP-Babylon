@@ -9,6 +9,7 @@ import RightFooter from "./RightFooter.jsx";
 import LeftSidebar from "./LeftSidebar.jsx";
 import RightSidebar from "./RightSidebar.jsx";
 
+import PostCreator from "./PostCreator.jsx";
 import Content from "./Content.jsx";
 
 import { useEffect, useState } from "react";
@@ -134,28 +135,34 @@ function Feed(){
 
                     </div>
                     
-                    <div id="content-card-container">
+                    <div className="feed-container">
 
-                       {primaryPostContainer && primaryPostContainer.posts.map((post, index) => {
-                        
-                            return(
+                        <PostCreator />
+
+                        <div id="content-card-container">
+
+                            {primaryPostContainer && primaryPostContainer.posts.map((post, index) => {
                             
-                                <Content 
+                                return(
                                 
-                                    id={post._id}
-                                    key={"content" + (index + 1)}
+                                    <Content 
+                                    
+                                        id={post._id}
+                                        key={"content" + (index + 1)}
 
-                                    author={post.author.username} 
-                                    date={post.momentDateEdited}
+                                        author={post.author.username} 
+                                        date={post.momentDateEdited}
 
-                                    title={post.title}
-                                    body={post.body}
+                                        title={post.title}
+                                        body={post.body}
 
-                                />                           
-                            );
-                        })}
+                                    />                           
+                                );
+                            })}
 
-                        {loaderStatus && <Loader />}
+                            {loaderStatus && <Loader />}
+
+                        </div>
 
                     </div>
 

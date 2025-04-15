@@ -23,7 +23,11 @@ hr{
 }
 
 .page-middle{
+
     height: 79vh;
+    border: 1px solid goldenrod;
+
+    overflow-y: hidden;
 }
 
 .page-section{
@@ -224,12 +228,19 @@ hr{
 /* Level 3 | Component Level Elements */
 /* Feed.jsx */
 
+.feed-container{
+
+    width: 50vw;
+    border: 1px solid fuchsia;
+
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
 #content-card-container{
 
+    height: 80vh;
     border: 1px solid palevioletred;
-
-    width: 100vw;
-    margin: 0px 20px;
 
     display: flex;
     flex-wrap: wrap;
@@ -388,7 +399,7 @@ hr{
 
 #user-detail-container{
 
-    width: 100vw;
+    width: 50vw;
     border: 1px solid palevioletred;
     
     margin: 0px 20px;
@@ -432,7 +443,7 @@ hr{
 
 #post-detail-container{
 
-    width: 100vw;
+    width: 50vw;
     border: 1px solid palevioletred;
     
     margin: 0px 20px;
@@ -616,4 +627,62 @@ hr{
 
     display: flex;
     gap: 20px;
+}
+
+/* Level 3 | Component Level Elements */
+/* PostCreator.jsx */
+
+#post-creator{
+    
+    padding: 20px;
+    border: 1px solid brown;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+#post-creator-form{
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+#post-creator-top{
+    
+    display: flex;
+    flex-direction: column;
+
+    gap: 2.5px;
+}
+
+#post-creator-title, #post-creator-body{
+
+    padding: 5px;
+    font-family: Arial;
+}
+
+#post-creator-bottom{
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#post-creator-identifiers, #post-creator-buttons{
+
+    display: flex;
+    gap: 5px;
+}
+
+#post-creator-identifiers label{
+    font-size: 0.8rem;
+}
+
+#post-creator-buttons{
+
+    display: flex;
+    gap: 5px;
 }
