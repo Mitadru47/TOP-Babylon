@@ -82,6 +82,21 @@ function infiniteScroll(updatePrimaryPostContainer, setLoaderStatus){
     }
 }
 
+function scrollTopFeed(){
+
+    const contentCardContainer = document.getElementById("content-card-container");
+    const feedContainer = document.getElementById("feed-container");
+    
+    contentCardContainer.scrollTop = 0;
+    feedContainer.scrollTop = 0;
+}
+
+function scrollTopCreatePost(){
+
+    const feedContainer = document.getElementById("feed-container");
+    feedContainer.scrollTop = 0;
+}
+
 function Loader(){
 
     return(
@@ -135,7 +150,7 @@ function Feed(){
 
                     </div>
                     
-                    <div className="feed-container">
+                    <div id="feed-container">
 
                         <PostCreator />
 
@@ -170,8 +185,8 @@ function Feed(){
 
                             <div id="scroll-up-buttons">
 
-                                <button id="scroll-top-feed-button">Top of the Feed</button>
-                                <button id="scroll-top-create-post-button">Create Post</button>
+                                <button id="scroll-top-feed-button" onClick={scrollTopFeed}>Top of the Feed</button>
+                                <button id="scroll-top-create-post-button" onClick={scrollTopCreatePost}>Create Post</button>
 
                             </div>
 

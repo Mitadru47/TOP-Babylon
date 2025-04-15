@@ -228,13 +228,13 @@ hr{
 /* Level 3 | Component Level Elements */
 /* Feed.jsx */
 
-.feed-container{
+#feed-container{
 
     width: 50vw;
     border: 1px solid fuchsia;
 
     overflow-y: scroll;
-    /* scrollbar-width: none; */
+    scrollbar-width: none;
 }
 
 #content-card-container{
