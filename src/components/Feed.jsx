@@ -164,6 +164,19 @@ function Feed(){
 
                         </div>
 
+                        <div id="scroll-top-buttons">
+
+                            <div id="scroll-up-info">Scroll-Up Options</div>
+
+                            <div id="scroll-up-buttons">
+
+                                <button id="scroll-top-feed-button">Top of the Feed</button>
+                                <button id="scroll-top-create-post-button">Create Post</button>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                     <div className="page-right-bottom">

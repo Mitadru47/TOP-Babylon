@@ -234,7 +234,7 @@ hr{
     border: 1px solid fuchsia;
 
     overflow-y: scroll;
-    scrollbar-width: none;
+    /* scrollbar-width: none; */
 }
 
 #content-card-container{
@@ -249,6 +249,25 @@ hr{
 
     overflow-y: scroll;
     scrollbar-width: thin;
+}
+
+#scroll-top-buttons{
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+    gap: 10px;
+}
+
+#scroll-up-info{
+    font-size: 0.8rem;
+}
+
+#scroll-up-buttons button{
+    margin: 0px 2.5px;
 }
 
 /* Level 3 | Component Level Elements */
