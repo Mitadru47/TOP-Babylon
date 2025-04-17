@@ -690,13 +690,13 @@ hr{
     justify-content: space-between;
 }
 
-#post-creator-identifiers, #post-creator-buttons{
+#post-creator-buttons{
 
     display: flex;
     gap: 5px;
 }
 
-#post-creator-identifiers label{
+#post-author-container label{
     font-size: 0.8rem;
 }
 
@@ -704,4 +704,30 @@ hr{
 
     display: flex;
     gap: 5px;
+}
+
+#post-creator-status{
+
+    display: none; 
+    border: 1px dashed black;
+    
+    padding: 10px;
+    margin-top: 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+#post-creator-status-left{
+    font-size: 0.9rem;
+}
+
+#post-creator-status-right{
+
+    font-size: 0.8rem;
+    color: brown;
+    
+    white-space: pre-wrap;
 }

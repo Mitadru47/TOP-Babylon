@@ -1,6 +1,5 @@
 function CommentCreator(props){
 
-
     return(
 
         <div id="comment-creator">
