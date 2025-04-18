@@ -3,9 +3,16 @@ import axios from "../utils/axios";
 import { isLoggedIn } from "../utils/auth";
 import Login from "./Login";
 
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { BABYLON_URL } from "../utils/constants";
+
 async function handleSubmit(event){
 
     event.preventDefault();
+
+    const submitButton = document.querySelector("#post-creator-submit-button");
+    submitButton.disabled = true;
 
     const formData = new FormData(event.currentTarget);
 
@@ -18,26 +25,37 @@ async function handleSubmit(event){
 
             .then((response) => {
 
-                if(response){
-
-                }
-
-                console.log(response);
+                console.log(response.data);
                 
+                if(response.data.status === "Success!"){
+                    
+                    const statusElement = document.querySelector("#post-creator-status");
+                    statusElement.style.display = "flex";
+
+                    const statusElementText = document.querySelector("#post-creator-status-right");
+
+                    statusElementText.style.color = "black";
+                    statusElementText.innerText = "Post Creation Successful!\n";
+                    
+                    const newPostInfo = document.createElement("span");
+                    
+                    newPostInfo.style.fontSize = "0.65rem";
+                    newPostInfo.innerText = "Post ID: " + response.data.id;
+                    
+                    statusElementText.appendChild(newPostInfo);
+                    setTimeout(() => window.location.href = BABYLON_URL, 2000);
+                }
             })
 
             .catch((error) => {
                 
+                submitButton.disabled = false;
                 console.log(error.response.data.error);
             
                 if(error.response.data.status === "Failure!"){
 
-                    // Parsing Error Text
-
                     let errorText = "";
                     error.response.data.error.map((errorEntry, index) => {
-                        
-                        console.log(errorEntry.msg);
                         
                         if(index === 0)
                             errorText = errorEntry.msg;
@@ -48,7 +66,7 @@ async function handleSubmit(event){
                         if(((error.response.data.error.length - 1) === index)){
 
                             if(index > 0) 
-                                errorText = errorText + "\n\n\tPlease try again!";
+                                errorText = errorText + "\n\nPlease try again!";
     
                             else
                                 errorText = errorText + "\nPlease try again!";
@@ -56,16 +74,13 @@ async function handleSubmit(event){
                     
                     });
 
-
-                    console.log(errorText);
-                    
-                
-
                     const statusElement = document.querySelector("#post-creator-status");
                     statusElement.style.display = "flex";
 
                     const statusElementText = document.querySelector("#post-creator-status-right");
-                    statusElementText.innerText= errorText;
+
+                    statusElementText.style.color = "brown";
+                    statusElementText.innerText = errorText;
                 }
             })
     }
@@ -114,7 +129,7 @@ function PostCreator(props){
             <div id="post-creator-status" style={{display: "none"}}>
 
                 <div id="post-creator-status-left">Operation Status</div>
-                <div id="post-creator-status-right">{"Error Message\nPlease try again!"}</div>
+                <div id="post-creator-status-right"></div>
                     
             </div>       
 

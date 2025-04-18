@@ -729,5 +729,6 @@ hr{
     font-size: 0.8rem;
     color: brown;
     
+    text-align: end;
     white-space: pre-wrap;
 }
